@@ -1,0 +1,10 @@
+.swiper {
+    width: calc(100vw - 12rem);;
+    height: 25vh;
+}
+.swiper-slide{
+    width: 8rem;
+}
+.menu-icon{
+    width: 8rem;
+}
