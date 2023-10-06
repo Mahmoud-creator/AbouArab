@@ -19,13 +19,19 @@
 
 </head>
 
-<body class="flex flex-col sm:flex-row">
-
+<body class="flex flex-col sm:flex-row relative">
+    <button class="sidebar-button m-5 absolute start-0 top-0 md:hidden z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+        </svg>
+    </button>
     @include('components.sidebar')
 
-    <main id="main-container" class="flex-grow">
+    <main id="main-container" class="flex-grow relative">
 
         @yield('main')
+
+        @include('components.footer')
 
     </main>
 

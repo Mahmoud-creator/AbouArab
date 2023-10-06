@@ -1,9 +1,9 @@
 import Swiper from "swiper";
 
-const menuSwiper = new Swiper('.swiper', {
-    slidesPerView: 5,
+const productSwiper = new Swiper('.product-swiper', {
+    slidesPerView: 3,
+    centerInsufficientSlides: true,
     direction: 'horizontal',
-    loop: true,
     pagination: {
         el: '.swiper-pagination',
     },
@@ -14,18 +14,22 @@ const menuSwiper = new Swiper('.swiper', {
     scrollbar: {
         el: '.swiper-scrollbar',
     },
+    spaceBetween: 20,
     breakpoints: {
         0: {
-            slidesPerView: 2,
+            slidesPerView: 1,
+            spaceBetween: 10,
         },
         480: {
             slidesPerView: 2,
+            spaceBetween: 10,
         },
         768: {
             slidesPerView: 3,
+            spaceBetween: 10,
         },
         1024: {
-            slidesPerView: 5,
+            slidesPerView: 3,
         },
     },
 });

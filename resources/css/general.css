@@ -1,7 +1,24 @@
-body{
+body {
     height: 100vh;
 }
-#main-container{
+
+#main-container {
     background-color: #f4c637;
     height: 100vh;
+}
+
+#main-footer {
+    height: 20vh;
+    display: flex;
+    align-items: end;
+}
+
+@media (max-width: 768px) {
+
+    #main-footer {
+        height: auto;
+        display: flex;
+        align-items: end;
+    }
+
 }
