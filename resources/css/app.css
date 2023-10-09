@@ -2,3 +2,6 @@
 @import "sidebar.css";
 @import "general.css";
 @import "product-card.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

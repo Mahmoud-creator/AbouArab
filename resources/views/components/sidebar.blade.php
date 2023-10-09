@@ -5,20 +5,15 @@
         </svg>
     </button>
     <div class="logo-container">
-        <img class="logo" src="{{ asset('storage/logo_transparent.png') }}" alt="logo">
+        <img class="logo" src="{{ asset('storage/logo/logo-transparent.png') }}" alt="logo">
     </div>
     <nav id="menu">
         <ul id="menu-list">
-            <li class="font-semibold hover:ring-1 py-1.5 px-3 hover:ring-red-400 hover:text-red-400 transition-all cursor-pointer">
-                <a class="menu-btn">Home</a></li>
-            <li class="font-semibold hover:ring-1 py-1.5 px-3 hover:ring-red-400 hover:text-red-400 transition-all cursor-pointer">
-                <a class="menu-btn">Menu</a></li>
-            <li class="font-semibold hover:ring-1 py-1.5 px-3 hover:ring-red-400 hover:text-red-400 transition-all cursor-pointer">
-                <a class="menu-btn">About</a></li>
-            <li class="font-semibold hover:ring-1 py-1.5 px-3 hover:ring-red-400 hover:text-red-400 transition-all cursor-pointer">
-                <a class="menu-btn">Contact</a></li>
-            <li class="font-semibold hover:ring-1 py-1.5 px-3 hover:ring-red-400 hover:text-red-400 transition-all cursor-pointer">
-                <a class="menu-btn">About</a></li>
+            <x-sidebar-link name="Home" link="{{ route('page.home') }}" icon="{{ asset('storage/svgs/home.svg') }}"/>
+            <x-sidebar-link name="Menu" link="{{ route('page.menu') }}" icon="{{ asset('storage/svgs/menu.svg') }}"/>
+            <x-sidebar-link name="Bag" link="{{ route('page.bag') }}" icon="{{ asset('storage/svgs/bag.svg') }}"/>
+            <x-sidebar-link name="Contact" link="{{ route('page.contact') }}" icon="{{ asset('storage/svgs/contact.svg') }}"/>
+            <x-sidebar-link name="About" link="{{ route('page.about') }}" icon="{{ asset('storage/svgs/about.svg') }}"/>
         </ul>
     </nav>
     <div id="sidebar-footer">

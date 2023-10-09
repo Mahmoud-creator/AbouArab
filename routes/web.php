@@ -14,4 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class, 'index'])->name('page.home');
+Route::get('/', [PageController::class, 'home'])->name('page.home');
+Route::get('/menu', [PageController::class, 'menu'])->name('page.menu');
+Route::get('/bag', [PageController::class, 'bag'])->name('page.bag');
+Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
+Route::get('/about', [PageController::class, 'about'])->name('page.about');
+
+//Route::post('/contact', [])

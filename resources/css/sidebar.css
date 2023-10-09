@@ -1,5 +1,6 @@
 #sidebar{
     width: 100%;
+    max-width: 12rem;
     height: 100vh;
     background: #ffffff;
     min-width: 10rem;
