@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,4 @@ Route::get('/bag', [PageController::class, 'bag'])->name('page.bag');
 Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
 Route::get('/about', [PageController::class, 'about'])->name('page.about');
 
-//Route::post('/contact', [])
+Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
