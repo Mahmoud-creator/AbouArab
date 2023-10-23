@@ -10,11 +10,9 @@
                 <x-menu-card image="{{ asset('storage/icons/salad.svg') }}" white-image="{{ asset('storage/icons/salad-white.svg') }}" name="Salad"></x-menu-card>
         </div>
     </div>
-    <div class="swiper product-swiper">
-        <div class="swiper-wrapper">
-            @foreach($products as $product)
-                <x-product-card class="p-5 pl-sm-0" :product="$product"></x-product-card>
-            @endforeach
-        </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center">
+        @foreach($products as $product)
+            <x-product-card class="p-5 pl-sm-0 w-full" :product="$product"></x-product-card>
+        @endforeach
     </div>
 @endsection

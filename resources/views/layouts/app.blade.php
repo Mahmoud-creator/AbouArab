@@ -25,7 +25,7 @@
     </button>
     @include('components.sidebar')
 
-    <main id="main-container" class="flex-grow relative">
+    <main id="main-container" class="flex-grow relative overflow-y-auto overflow-x-hidden">
 
         @yield('main')
 

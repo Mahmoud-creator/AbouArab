@@ -9,16 +9,43 @@
     </div>
     <nav id="menu">
         <ul id="menu-list">
-            <x-sidebar-link name="Home" link="{{ route('page.home') }}" icon="{{ asset('storage/svgs/home.svg') }}"/>
-            <x-sidebar-link name="Menu" link="{{ route('page.menu') }}" icon="{{ asset('storage/svgs/menu.svg') }}"/>
-            <x-sidebar-link name="Bag" link="{{ route('page.bag') }}" icon="{{ asset('storage/svgs/bag.svg') }}"/>
-            <x-sidebar-link name="Contact" link="{{ route('page.contact') }}" icon="{{ asset('storage/svgs/contact.svg') }}"/>
-            <x-sidebar-link name="About" link="{{ route('page.about') }}" icon="{{ asset('storage/svgs/about.svg') }}"/>
+            <x-sidebar-link name="Home" :route="'page.home'" icon="{{ asset('storage/svgs/home.svg') }}"/>
+            <x-sidebar-link name="Menu" :route="'page.menu'" icon="{{ asset('storage/svgs/menu.svg') }}"/>
+            <x-sidebar-link name="Bag" :route="'page.bag'" icon="{{ asset('storage/svgs/bag.svg') }}"/>
+            <x-sidebar-link name="Contact" :route="'page.contact'" icon="{{ asset('storage/svgs/contact.svg') }}"/>
+            <x-sidebar-link name="About" :route="'page.about'" icon="{{ asset('storage/svgs/about.svg') }}"/>
         </ul>
     </nav>
-    <div id="sidebar-footer">
-        <p><span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">Contact</span> | <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">About</span></p>
-    </div>
+    @auth
+        <div id="sidebar-footer">
+            <p>
+                <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                    <a href="{{ route('user.profile') }}">
+                        Profile
+                    </a>
+                </span> | <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                    <a href="{{ route('user.logout') }}">
+                        Logout
+                    </a>
+                </span>
+            </p>
+        </div>
+    @endauth
+    @guest
+        <div id="sidebar-footer">
+            <p>
+                <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                    <a href="{{ route('user.create') }}">
+                        Sign Up
+                    </a>
+                </span> | <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                    <a href="{{ route('user.login') }}">
+                        Log In
+                    </a>
+                </span>
+            </p>
+        </div>
+    @endguest
 </section>
 <script>
     {{--When sidebar-button is clicked using jquery, show sidebar.--}}

@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\UserSessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +25,12 @@ Route::get('/contact', [PageController::class, 'contact'])->name('page.contact')
 Route::get('/about', [PageController::class, 'about'])->name('page.about');
 
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
+
+Route::get('/user', [UserController::class, 'index'])->name('user.profile');
+
+Route::get('/user/register', [UserRegistrationController::class, 'create'])->name('user.create');
+Route::post('/user/register', [UserRegistrationController::class, 'store'])->name('user.store');
+
+Route::get('/user/login', [UserSessionController::class, 'create'])->name('user.login');
+Route::post('/user/login', [UserSessionController::class, 'store'])->name('user.login');
+Route::get('/user/logout', [UserSessionController::class, 'destroy'])->name('user.logout');
