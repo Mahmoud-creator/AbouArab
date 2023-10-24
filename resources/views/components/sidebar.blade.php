@@ -19,11 +19,11 @@
     @auth
         <div id="sidebar-footer">
             <p>
-                <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                <span class="hover:border-b hover:border-red-500 cursor-pointer hover:text-red-500">
                     <a href="{{ route('user.profile') }}">
                         Profile
                     </a>
-                </span> | <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                </span> | <span class="hover:border-b hover:border-red-500 cursor-pointer hover:text-red-500">
                     <a href="{{ route('user.logout') }}">
                         Logout
                     </a>
@@ -34,11 +34,11 @@
     @guest
         <div id="sidebar-footer">
             <p>
-                <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                <span class="hover:border-b hover:border-red-500 cursor-pointer hover:text-red-500">
                     <a href="{{ route('user.create') }}">
                         Sign Up
                     </a>
-                </span> | <span class="hover:border-b hover:border-red-400 cursor-pointer hover:text-red-400">
+                </span> | <span class="hover:border-b hover:border-red-500 cursor-pointer hover:text-red-500">
                     <a href="{{ route('user.login') }}">
                         Log In
                     </a>

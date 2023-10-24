@@ -1,5 +1,5 @@
 @props(["image" => "", "white-image" => "", "name" => ""])
-<div class="swiper-slide menu-slide transition-all p-5 text-center cursor-pointer hover:bg-red-400 hover:text-white">
+<div class="swiper-slide menu-slide transition-all p-5 text-center cursor-pointer hover:bg-red-500 hover:text-white">
     <input type="hidden" value="{{ $whiteImage }}" class="whiteImage">
     <input type="hidden" value="{{ $image }}" class="image">
     <div class="flex flex-col gap-4">

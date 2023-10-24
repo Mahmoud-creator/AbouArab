@@ -17,9 +17,8 @@ class ProductCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->firstNameMale(),
-            'image' => 'storage/icons/burger.svg',
-            'white_image' => 'storage/icons/burger-white.svg',
+            'product_id' => $this->faker->numberBetween(1, 30),
+            'category_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

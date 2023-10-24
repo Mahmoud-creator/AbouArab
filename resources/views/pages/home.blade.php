@@ -16,7 +16,7 @@
     </style>
     <section class="w-full h-screen text-center">
         <div class="grid grid-cols-12 h-full">
-            <div id="first" class="col-span-12 lg:col-span-6 w-full h-full bg-red-400">
+            <div id="first" class="col-span-12 lg:col-span-6 w-full h-full bg-red-500">
                 <div>
                     <h1 class="text-5xl font-bold text-black my-5 w-full h-full text-center leading-tight tracking-wider text-shadow">Abou Arab</h1>
                     <h2 class="text-2xl font-bold text-black my-5 w-full h-full text-center leading-tight tracking-wider text-shadow">Special Offers Everyday</h2>
