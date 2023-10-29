@@ -20,10 +20,11 @@
         <div id="sidebar-footer">
             <p>
                 <span class="hover:border-b hover:border-red-500 cursor-pointer hover:text-red-500">
-                    <a href="{{ route('user.profile') }}">
-                        Profile
-                    </a>
-                </span> | <span class="hover:border-b hover:border-red-500 cursor-pointer hover:text-red-500">
+{{--                    <a href="{{ route('user.profile') }}">--}}
+{{--                        Profile--}}
+{{--                    </a>--}}
+{{--                </span> | --}}
+                <span class="hover:border-b hover:border-red-500 cursor-pointer hover:text-red-500">
                     <a href="{{ route('user.logout') }}">
                         Logout
                     </a>

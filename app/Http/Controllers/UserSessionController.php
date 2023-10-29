@@ -10,7 +10,9 @@ class UserSessionController extends Controller
 
     public function index(Request $request)
     {
-        return view('pages.auth.user.login');
+        $title = "Login | Abou Arab";
+
+        return view('pages.auth.user.login', ['title' => $title]);
     }
 
     public function login(Request $request)

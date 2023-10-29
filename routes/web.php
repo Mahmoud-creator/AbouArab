@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
@@ -31,6 +32,8 @@ Route::get('/user', [UserController::class, 'index'])->name('user.profile');
 Route::get('/user/register', [UserRegistrationController::class, 'create'])->name('user.create');
 Route::post('/user/register', [UserRegistrationController::class, 'store'])->name('user.store');
 
-Route::get('/user/login', [UserSessionController::class, 'create'])->name('user.login');
-Route::post('/user/login', [UserSessionController::class, 'store'])->name('user.login');
+Route::get('/user/login', [UserSessionController::class, 'index'])->name('user.login');
+Route::post('/user/login', [UserSessionController::class, 'login'])->name('user.login');
 Route::get('/user/logout', [UserSessionController::class, 'destroy'])->name('user.logout');
+
+Route::get('/menu/{category}', [CategoryController::class, 'getProductCategory'])->name('products.category');

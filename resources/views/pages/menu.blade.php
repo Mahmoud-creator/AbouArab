@@ -4,7 +4,7 @@
     <div class="swiper menu-swiper">
         <div class="swiper-wrapper">
             @foreach(\App\Models\Category::all() as $category)
-                <x-menu-card image="{{ asset($category->image) }}" white-image="{{ asset($category->white_image) }}" name="{{ $category->name }}"></x-menu-card>
+                <x-menu-card :category="$category"></x-menu-card>
             @endforeach
         </div>
     </div>
