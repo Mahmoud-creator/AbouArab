@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
+
+    public function index()
+    {
+        $messages = Message::all();
+        $title = "Manage All Messages";
+        return view('admin.messages', ['messages' => $messages, 'title' => $title]);
+    }
     public function store(Request $request)
     {
         $request->validate([

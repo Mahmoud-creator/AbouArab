@@ -16,8 +16,7 @@
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
                     <input type="email" id="email" name="email"
-                           class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring focus:ring-red-500"
-                           required>
+                           class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring focus:ring-red-500">
                 </div>
                 <div class="mb-4">
                     <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
@@ -45,6 +44,7 @@
                             class="bg-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Register
                     </button>
+                    <p class="mt-6">Already have an account? <a href="{{ route('user.login') }}" class="text-red-500 hover:text-red-400">Login</a></p>
                 </div>
             </form>
         </div>

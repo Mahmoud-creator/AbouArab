@@ -24,6 +24,7 @@
                             class="bg-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Login
                     </button>
+                    <p class="mt-6">Don't have an account? <a href="{{ route('user.create') }}" class="text-red-500 hover:text-red-400">Register</a></p>
                 </div>
             </form>
         </div>

@@ -5,7 +5,9 @@
         </svg>
     </button>
     <div class="logo-container">
-        <img class="logo" src="{{ asset('storage/logo/logo-transparent.png') }}" alt="logo">
+        <a href="{{ route('page.home') }}">
+            <img class="logo" src="{{ asset('storage/logo/logo-transparent.png') }}" alt="logo">
+        </a>
     </div>
     <nav id="menu">
         <ul id="menu-list">

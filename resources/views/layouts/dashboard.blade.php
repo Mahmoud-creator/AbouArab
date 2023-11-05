@@ -31,10 +31,10 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                             <x-admin.nav-link name="Dashboard" :route="'admin.dashboard'" />
                             <x-admin.nav-link name="Products" :route="'admin.products'" />
                             <x-admin.nav-link name="Users" :route="'admin.users'" />
+                            <x-admin.nav-link name="Messages" :route="'admin.messages'" />
                         </div>
                     </div>
                 </div>
@@ -100,6 +100,7 @@
                 <x-admin.nav-link name="Dashboard" :route="'admin.dashboard'" />
                 <x-admin.nav-link name="Products" :route="'admin.products'" />
                 <x-admin.nav-link name="Users" :route="'admin.users'" />
+                <x-admin.nav-link name="Messages" :route="'admin.messages'" />
             </div>
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-5">

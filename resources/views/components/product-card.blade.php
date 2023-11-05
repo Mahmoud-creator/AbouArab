@@ -7,7 +7,9 @@
                 <p class="font-bold text-xl">{{ $product->name }}</p>
                 <p class="font-bold text-red-500 text-lg">$ {{ $product->price }}</p>
                 <p class="font-light text-sm text-gray-700">{{ $product->description }}</p>
-                <button data-id="{{ $product->id }}" class="add-to-cart bg-red-500 hover:bg-red-400 @guest bg-gray-500 hover:bg-gray-400 cursor-none pointer-events-none @endguest capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>
+                @auth
+                    <button data-id="{{ $product->id }}" class="add-to-cart bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>
+                @endauth
             </div>
         </div>
     </div>

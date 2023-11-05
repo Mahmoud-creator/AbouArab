@@ -17,7 +17,7 @@ class UserRegistrationController extends Controller
     {
         $request->validate([
             'name' => 'required|string|min:3|max:50',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'unique:users,email',
             'phone' => 'required|numeric|digits:8',
             'password' => 'required|confirmed|min:5|max:100',
             'password_confirmation' => 'required'

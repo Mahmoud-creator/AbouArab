@@ -11,20 +11,8 @@ use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\UserSessionController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', [PageController::class, 'home'])->name('page.home');
 Route::get('/menu', [PageController::class, 'menu'])->name('page.menu');
-Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
 Route::get('/about', [PageController::class, 'about'])->name('page.about');
 
 Route::post('/contact', [MessageController::class, 'store'])->name('contact.store');
@@ -43,6 +31,7 @@ Route::get('/menu/{category}', [CategoryController::class, 'getProductCategory']
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 
 Route::middleware(['auth'])->group(function(){
+    Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
     Route::get('/bag', [PageController::class, 'bag'])->name('page.bag');
     Route::post('/cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.quantity');
 });
@@ -54,6 +43,7 @@ Route::group(['prefix' => '/admin'], function(){
         Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+        Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
         Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
     });
 });
