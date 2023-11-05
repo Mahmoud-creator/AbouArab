@@ -23,8 +23,23 @@ class MessageController extends Controller
             'message' => 'required|string|max:1000',
         ]);
 
-        Message::create($request->except('_token'));
+        $messageData = [
+            'name' => trim(htmlspecialchars($request->input('name'))),
+            'email' => trim(htmlspecialchars($request->input('email'))),
+            'subject' => trim(htmlspecialchars($request->input('subject'))),
+            'message' => trim(htmlspecialchars($request->input('message'))),
+        ];
+
+
+        Message::create($messageData);
 
         return redirect()->back()->with(['success' => 'Your message was sent successfully!']);
+    }
+
+    public function destroy(Request $request)
+    {
+        $id = $request->id;
+        Message::findOrFail($id)->delete();
+        return back()->with(['success' => 'Message deleted successfully!']);
     }
 }

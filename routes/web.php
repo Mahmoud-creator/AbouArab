@@ -37,15 +37,21 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.quantity');
 });
 
-Route::group(['prefix' => '/admin'], function(){
-    Route::get('/login', [AdminController::class, 'getLogin'])->name('admin.login');
-    Route::post('/login', [AdminController::class, 'postLogin'])->name('admin.login');
+Route::group(['prefix' => '/admin', 'as' => 'admin.'], function(){
+    Route::get('/login', [AdminController::class, 'getLogin'])->name('login');
+    Route::post('/login', [AdminController::class, 'postLogin'])->name('login');
     Route::middleware('admin')->group(function(){
-        Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
-        Route::get('/products', [ProductController::class, 'index'])->name('admin.products');
-        Route::get('/users', [UserController::class, 'index'])->name('admin.users');
-        Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
-        Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+        Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/products', [ProductController::class, 'index'])->name('products');
+        Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+        Route::post('/products/create', [ProductController::class, 'store'])->name('products.store');
+        Route::post('/products/delete', [ProductController::class, 'destroy'])->name('products.delete');
+        Route::get('/products/edit/{productId}', [ProductController::class, 'edit'])->name('products.edit');
+        Route::put('/products/update', [ProductController::class, 'update'])->name('products.update');
+        Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/messages', [MessageController::class, 'index'])->name('messages');
+        Route::post('/messages/delete', [MessageController::class, 'destroy'])->name('messages.delete');
+        Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
     });
 });
 
