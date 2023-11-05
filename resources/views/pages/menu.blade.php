@@ -27,9 +27,10 @@
                         '_token': '{{ csrf_token() }}',
                     },
                     'success': function (data) {
-                        console.log(data.message);
+                        $('#flash-message-container').toggle('hidden');
+                        $('#flash-message').html(data.message);
                         setTimeout(function (){
-
+                            $('#flash-message-container').toggle('hidden')
                         }, 2000);
                     }
                 })

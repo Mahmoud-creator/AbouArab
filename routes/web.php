@@ -28,9 +28,10 @@ Route::get('/user/logout', [UserSessionController::class, 'destroy'])->name('use
 
 Route::get('/menu/{category}', [CategoryController::class, 'getProductCategory'])->name('products.category');
 
-Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
 
 Route::middleware(['auth'])->group(function(){
+    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+    Route::post('/cart/delete/{itemId}', [CartController::class, 'destroy'])->name('cart.delete');
     Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
     Route::get('/bag', [PageController::class, 'bag'])->name('page.bag');
     Route::post('/cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.quantity');

@@ -13,11 +13,18 @@ class ProductCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i=1;$i<=30;$i++){
+        $cat = 1;
+        $catNum = 0;
+        for ($i=31;$i<=60;$i++){
             ProductCategory::create([
                 'product_id' => $i,
-                'category_id' => rand(1,5)
+                'category_id' => $cat
             ]);
+            $catNum++;
+            if ($catNum % 5 == 0) {
+                $catNum = 0;
+                $cat++;
+            }
         }
     }
 }

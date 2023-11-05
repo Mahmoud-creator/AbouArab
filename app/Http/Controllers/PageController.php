@@ -23,7 +23,7 @@ class PageController extends Controller
 
     public function bag(){
         $title = "Bag | Abou Arab";
-        $products = Cart::where('user_id', auth()->user()->id)->with(['product'])->get()->pluck('product');
+        $products = Cart::where('user_id', auth()->user()->id)->with(['product'])->get();
         return view('pages.bag', ['title' => $title, 'products' => $products]);
     }
 
