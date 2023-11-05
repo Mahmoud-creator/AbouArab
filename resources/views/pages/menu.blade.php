@@ -14,3 +14,26 @@
         @endforeach
     </div>
 @endsection
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            $('.add-to-cart').on('click', function (){
+                let id = $(this).data('id');
+                $.ajax({
+                    'url': '{{ route('cart.store') }}',
+                    'type': 'POST',
+                    'data': {
+                        'productId': id,
+                        '_token': '{{ csrf_token() }}',
+                    },
+                    'success': function (data) {
+                        console.log(data.message);
+                        setTimeout(function (){
+
+                        }, 2000);
+                    }
+                })
+            });
+        })
+    </script>
+@endsection

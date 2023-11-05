@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,8 @@ class PageController extends Controller
 
     public function bag(){
         $title = "Bag | Abou Arab";
-        return view('pages.bag', ['title' => $title]);
+        $products = Cart::where('user_id', auth()->user()->id)->with(['product'])->get()->pluck('product');
+        return view('pages.bag', ['title' => $title, 'products' => $products]);
     }
 
     public function contact(){

@@ -35,4 +35,5 @@
 
     <x-flash-message />
 </body>
+@yield('scripts')
 </html>

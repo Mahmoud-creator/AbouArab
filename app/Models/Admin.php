@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Product extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
 
+    protected $table = 'admin';
+
     protected static $unguarded = true;
 
-    public function category()
-    {
-        return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
-    }
+
 }

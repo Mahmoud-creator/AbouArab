@@ -13,6 +13,11 @@ class ProductCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        ProductCategory::factory(5)->create();
+        for ($i=1;$i<=30;$i++){
+            ProductCategory::create([
+                'product_id' => $i,
+                'category_id' => rand(1,5)
+            ]);
+        }
     }
 }
