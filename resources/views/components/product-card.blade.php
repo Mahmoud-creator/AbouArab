@@ -2,7 +2,7 @@
 @if($product)
     <div {{ $attributes->merge([ "class" => "swiper-slide text-left cursor-pointer" ]) }}>
         <div class="bg-white hover:ring hover:ring-red-500 transition-all">
-            <img class="h-80 w-full object-center object-cover" src="{{ asset($product->image) }}" alt="burger">
+            <img class="w-full object-center object-cover" src="{{ asset($product->image) }}" alt="burger">
             <div class="p-5 space-y-2 h-30">
                 <p class="font-bold text-xl">{{ $product->name }}</p>
                 <p class="font-bold text-red-500 text-lg">$ {{ $product->price }}</p>

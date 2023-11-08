@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
     Route::get('/bag', [PageController::class, 'bag'])->name('page.bag');
     Route::post('/cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.quantity');
+
+    Route::post('checkout', [OrderController::class, 'store'])->name('checkout.store');
 });
 
 Route::group(['prefix' => '/admin', 'as' => 'admin.'], function(){
@@ -51,6 +54,10 @@ Route::group(['prefix' => '/admin', 'as' => 'admin.'], function(){
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/messages', [MessageController::class, 'index'])->name('messages');
         Route::post('/messages/delete', [MessageController::class, 'destroy'])->name('messages.delete');
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+        Route::post('/orders/status', [OrderController::class, 'changeState'])->name('orders.changeState');
+        Route::get('/orders/show', [OrderController::class, 'show'])->name('orders.show');
+        Route::post('/orders/delete', [OrderController::class, 'destroy'])->name('orders.delete');
         Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
     });
 });

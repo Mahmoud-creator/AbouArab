@@ -35,6 +35,7 @@
                             <x-admin.nav-link name="Products" :route="'admin.products'" />
                             <x-admin.nav-link name="Users" :route="'admin.users'" />
                             <x-admin.nav-link name="Messages" :route="'admin.messages'" />
+                            <x-admin.nav-link name="Orders" :route="'admin.orders'" />
                         </div>
                     </div>
                 </div>
@@ -70,6 +71,7 @@
                             -->
                             <div id="user-menu" class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                                 <!-- Active: "bg-gray-100", Not Active: "" -->
+                                <a href="{{ route('page.home') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Open Website</a>
                                 <a href="{{ route('admin.logout') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Sign out</a>
                             </div>
                         </div>
@@ -101,6 +103,7 @@
                 <x-admin.nav-link name="Products" :route="'admin.products'" />
                 <x-admin.nav-link name="Users" :route="'admin.users'" />
                 <x-admin.nav-link name="Messages" :route="'admin.messages'" />
+                <x-admin.nav-link name="Orders" :route="'admin.orders'" />
             </div>
             <div class="border-t border-gray-700 pb-3 pt-4">
                 <div class="flex items-center px-5">
@@ -121,6 +124,7 @@
                 </div>
                 <div class="mt-3 space-y-1 px-2">
                     <a href="{{ route('admin.logout') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
+                    <a href="{{ route('page.home') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Open Website</a>
                 </div>
             </div>
         </div>
