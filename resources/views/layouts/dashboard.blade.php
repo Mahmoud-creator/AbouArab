@@ -14,10 +14,13 @@
     {{--Swiper--}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    {{--Select2 CDN--}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     {{--Project Scripts & Styles--}}
     <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
-
+    @yield('header-scripts')
 </head>
 <body class="h-full">
 <div class="min-h-full">
@@ -33,6 +36,7 @@
                         <div class="ml-10 flex items-baseline space-x-4">
                             <x-admin.nav-link name="Dashboard" :route="'admin.dashboard'" />
                             <x-admin.nav-link name="Products" :route="'admin.products'" />
+                            <x-admin.nav-link name="Addons" :route="'admin.addons'" />
                             <x-admin.nav-link name="Users" :route="'admin.users'" />
                             <x-admin.nav-link name="Messages" :route="'admin.messages'" />
                             <x-admin.nav-link name="Orders" :route="'admin.orders'" />
@@ -101,6 +105,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <x-admin.nav-link name="Dashboard" :route="'admin.dashboard'" />
                 <x-admin.nav-link name="Products" :route="'admin.products'" />
+                <x-admin.nav-link name="Addons" :route="'admin.addons'" />
                 <x-admin.nav-link name="Users" :route="'admin.users'" />
                 <x-admin.nav-link name="Messages" :route="'admin.messages'" />
                 <x-admin.nav-link name="Orders" :route="'admin.orders'" />
@@ -161,8 +166,6 @@
             event.preventDefault();
             mobileMenu.toggleClass('hidden');
         });
-
-
     });
 </script>
 @yield('footer-scripts')

@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@tailwindcss/forms": "^0.5.6",
+        "apexcharts": "^3.45.0",
         "sweetalert2": "^11.7.31",
         "swiper": "^10.3.1"
     }

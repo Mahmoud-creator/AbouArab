@@ -22,35 +22,35 @@
                                         <dl class="divide-y divide-gray-400">
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Customer name</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-name">Margot Foster</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-name"></dd>
                                             </div>
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Customer email</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-email">jackson@gmail.com</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-email"></dd>
                                             </div>
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Customer phone</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-phone">+1 (234) 567-8910</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-phone"></dd>
                                             </div>
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Order region</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-region">North America</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-region"></dd>
                                             </div>
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Customer address</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-address">1234 Main Street #5432</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="customer-address"></dd>
                                             </div>
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Order amount</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-amount">$123</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-amount"></dd>
                                             </div>
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Note</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-note">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-note"></dd>
                                             </div>
                                             <div class="px-4 py-3 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                                 <dt class="text-sm font-medium leading-6 text-gray-900">Order status</dt>
-                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-status">Paid</dd>
+                                                <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" id="order-status"></dd>
                                             </div>
 
                                             <div class="px-4 py-3 sm:px-0">
@@ -61,42 +61,12 @@
                                                         <tr class="text-gray-600 uppercase text-sm leading-normal">
                                                             <th class="py-3 text-left">Image</th>
                                                             <th class="py-3 text-left">Name</th>
+                                                            <th class="py-3 text-left">Addons</th>
                                                             <th class="py-3 text-left">Quantity</th>
                                                             <th class="py-3 text-left">Price</th>
                                                         </tr>
                                                         </thead>
-                                                        <tbody class="text-gray-600 text-sm font-light" id="items-body">
-                                                            <tr class="hover:bg-gray-100 cursor-pointer border-b border-gray-200">
-                                                                <td><img src="http://127.0.0.1:8000/storage/images/eOL8Q1onslF5qR0p1a8lghz54l7Dfxf8Rcy5AT2G.png" class="w-24" alt=""></td>
-                                                                <td>Kaake Cheese</td>
-                                                                <td>12</td>
-                                                                <td>$12</td>
-                                                            </tr>
-                                                            <tr class="hover:bg-gray-100 cursor-pointer border-b border-gray-200">
-                                                                <td><img src="http://127.0.0.1:8000/storage/images/eOL8Q1onslF5qR0p1a8lghz54l7Dfxf8Rcy5AT2G.png" class="w-24" alt=""></td>
-                                                                <td>Kaake Cheese</td>
-                                                                <td>12</td>
-                                                                <td>$12</td>
-                                                            </tr>
-                                                            <tr class="hover:bg-gray-100 cursor-pointer border-b border-gray-200">
-                                                                <td><img src="http://127.0.0.1:8000/storage/images/eOL8Q1onslF5qR0p1a8lghz54l7Dfxf8Rcy5AT2G.png" class="w-24" alt=""></td>
-                                                                <td>Kaake Cheese</td>
-                                                                <td>12</td>
-                                                                <td>$12</td>
-                                                            </tr>
-                                                            <tr class="hover:bg-gray-100 cursor-pointer border-b border-gray-200">
-                                                                <td><img src="http://127.0.0.1:8000/storage/images/eOL8Q1onslF5qR0p1a8lghz54l7Dfxf8Rcy5AT2G.png" class="w-24" alt=""></td>
-                                                                <td>Kaake Cheese</td>
-                                                                <td>12</td>
-                                                                <td>$12</td>
-                                                            </tr>
-                                                            <tr class="hover:bg-gray-100 cursor-pointer border-b border-gray-200">
-                                                                <td><img src="http://127.0.0.1:8000/storage/images/eOL8Q1onslF5qR0p1a8lghz54l7Dfxf8Rcy5AT2G.png" class="w-24" alt=""></td>
-                                                                <td>Kaake Cheese</td>
-                                                                <td>12</td>
-                                                                <td>$12</td>
-                                                            </tr>
-                                                        </tbody>
+                                                        <tbody class="text-gray-600 text-sm font-light" id="items-body"></tbody>
                                                     </table>
                                                 </div>
                                             </div>

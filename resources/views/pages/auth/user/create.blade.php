@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('main')
-    <div class="container mx-auto mt-10">
-        <div class="max-w-md mx-auto bg-white p-8 border rounded-lg shadow-md">
+    <div class="registration-container mx-auto md:mt-10 flex flex-col-reverse md:flex-row md:w-4/5">
+        <div class="flex-1 max-w-md mx-auto bg-white p-8 border rounded-tl-lg rounded-bl-lg shadow-md">
             <h2 class="text-2xl font-semibold mb-6">Create a new user account</h2>
             <form action="{{ route('user.create') }}" method="POST">
                 @csrf
@@ -47,6 +47,9 @@
                     <p class="mt-6">Already have an account? <a href="{{ route('user.login') }}" class="text-red-500 hover:text-red-400">Login</a></p>
                 </div>
             </form>
+        </div>
+        <div class="flex-1 rounded-tr-lg rounded-br-lg">
+            <img src="{{ asset('storage/banners/abou-arab.jpg') }}" class="object-cover object-center w-full h-full rounded-tr-xl rounded-br-xl" alt="">
         </div>
     </div>
 @endsection

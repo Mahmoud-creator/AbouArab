@@ -12,3 +12,14 @@
     transition: opacity 0.5s ease-in-out;
     animation: hideMessage 3s forwards;
 }
+
+@font-face {
+    font-family: 'pizza';
+    src: url('../../public/fonts/OrderPizza.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#main-container::-webkit-scrollbar {
+    display: none!important;
+}

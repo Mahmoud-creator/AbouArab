@@ -13,4 +13,12 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.users', ['title' => $title, 'users' => $users]);
     }
+
+    public function destroy(Request $request)
+    {
+        $user = User::findOrFail($request->user_id);
+        $user->delete();
+        return response()->json(['message' => 'User was deleted successfully']);
+    }
+
 }

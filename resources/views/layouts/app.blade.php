@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     {{--Project Scripts & Styles--}}
     @vite(['resources/js/app.js', 'resources/css/app.css'])
-
+    @yield('header-scripts')
 </head>
 
 <body class="flex flex-col sm:flex-row relative">

@@ -55,6 +55,16 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="mb-4">
+                                <label for="addons[]"
+                                       class="block mb-2 text-sm font-medium leading-5 text-gray-700">Addons</label>
+                                <select class="addons w-full" name="addons[]" multiple="multiple">
+                                    <option value="" disabled>Select Addons</option>
+                                    @foreach(\App\Models\Addons::all() as $addon)
+                                        <option value="{{ $addon->id }}" @if(in_array($addon->id, $product->addons->pluck('id')->toArray())) selected @endif>{{ $addon->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="text-right">
                                 <button type="submit"
                                         class="bg-red-500 hover:bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
@@ -100,6 +110,9 @@
                     reader.readAsDataURL(this.files[0]);
                 }
             });
+        });
+        $(document).ready(function() {
+            $('.addons').select2();
         });
     </script>
 @endsection

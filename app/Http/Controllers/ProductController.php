@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductAddon;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +47,13 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'image' => $url,
             ]);
+
+            foreach($request->addons ?? [] as $addon){
+                ProductAddon::create([
+                    'product_id' => $product->id,
+                    'addon_id' => $addon
+                ]);
+            }
 
             ProductCategory::create([
                 'product_id' => $product->id,
@@ -100,6 +108,17 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'image' => $url,
             ]);
+
+            ProductAddon::where('product_id', $request->productId)
+                ->whereNotIn('addon_id', $request->addons ?? [])
+                ->delete();
+
+            foreach($request->addons ?? [] as $addon){
+                ProductAddon::updateOrCreate([
+                    'product_id' => $request->productId,
+                    'addon_id' => $addon
+                ]);
+            }
 
             ProductCategory::where('product_id', $request->productId)->update([
                 'category_id' => $request->category,

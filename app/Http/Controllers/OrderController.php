@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Addons;
+use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -20,6 +22,7 @@ class OrderController extends Controller
 
         return view('admin.orders', ['orders' => $orders, 'title' => $title]);
     }
+
     public function store(Request $request)
     {
         $validator = $this->validateCheckoutData($request->all());
@@ -29,11 +32,7 @@ class OrderController extends Controller
         }
 
         $orderItems = Cart::where('user_id', auth()->user()->id)->with('product')->get();
-        $total = 0;
-
-        foreach ($orderItems as $item) {
-            $total += $item->product->price * $item->quantity;
-        }
+        $total = Cart::getTotalPrice();
 
         try {
             DB::beginTransaction();
@@ -43,7 +42,7 @@ class OrderController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'address' => $request->street_address . " " . $request->street_address,
+                'address' => $request->street_address . " " . $request->building_name . " " . $request->floor_number,
                 'amount' => $total,
                 'note' => $request->note,
                 'region' => $request->region,
@@ -54,9 +53,17 @@ class OrderController extends Controller
                 OrderProduct::create([
                     'order_id' => $order->id,
                     'product_id' => $item->product->id,
-                    'quantity' => $item->quantity
+                    'quantity' => $item->quantity,
+                    'addons' => $item->addons,
                 ]);
             }
+
+            Address::updateOrCreate(['user_id' => auth()->user()->id], [
+                'region' => $request->region,
+                'street' => $request->street_address,
+                'building' => $request->building_name,
+                'floor' => $request->floor_number,
+            ]);
 
             Cart::where('user_id', auth()->user()->id)->delete();
 
@@ -65,7 +72,7 @@ class OrderController extends Controller
 
             return response()->json(['message' => 'Product ordered successfully']);
 
-        }catch (Exception $e){
+        } catch (Exception $e) {
             DB::rollBack();
             return response()->json(['errors' => $e->getMessage()], 422);
         }
@@ -80,6 +87,8 @@ class OrderController extends Controller
             'phone' => 'required|string',
             'region' => 'required|string',
             'street_address' => 'required|string',
+            'building_name' => 'required|string',
+            'floor_number' => 'required|string',
         ];
 
         $messages = [
@@ -90,6 +99,8 @@ class OrderController extends Controller
             'phone.required' => 'Phone is required.',
             'region.required' => 'Region is required.',
             'street_address.required' => 'Street address is required.',
+            'building_name.required' => 'Building name is required.',
+            'floor_number.required' => 'Floor number is required.',
         ];
 
         return Validator::make($data, $rules, $messages);
@@ -107,6 +118,17 @@ class OrderController extends Controller
         $order = Order::findOrFail($request->id);
 
         $orderItems = OrderProduct::where('order_id', $order->id)->with('product')->get();
+
+        foreach($orderItems as $item) {
+            $item->price = $item->product->price * $item->quantity;
+            if ($item->addons != null) {
+                $addons = json_decode($item->addons);
+                foreach($addons as $addon) {
+                    $addonObject = Addons::firstWhere('slug' , $addon);
+                    $item->price += $addonObject->price * $item->quantity;
+                }
+            }
+        }
 
         $data = [
             'id' => $order->id,
@@ -129,6 +151,6 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($request->order_id);
         $order->delete();
-        return response()->json(['message' => 'Order status changed successfully']);
+        return response()->json(['message' => 'Order was deleted successfully']);
     }
 }

@@ -13,7 +13,14 @@
         <ul id="menu-list">
             <x-sidebar-link name="Home" :route="'page.home'" icon="{{ asset('storage/svgs/home.svg') }}"/>
             <x-sidebar-link name="Menu" :route="'page.menu'" icon="{{ asset('storage/svgs/menu.svg') }}"/>
-            <x-sidebar-link name="Bag" :route="'page.bag'" icon="{{ asset('storage/svgs/bag.svg') }}"/>
+            <x-sidebar-link name="Bag" :route="'page.bag'" icon="{{ asset('storage/svgs/bag.svg') }}">
+                @php
+                    $user = auth()->user();
+                    $totalQuantity = $user ? App\Models\Cart::getTotalQuantity() : '';
+                    $cartCount = $totalQuantity == 0 ? '' : $totalQuantity;
+                @endphp
+                <span class="text-sm text-red-500" id="cart-count">{{ $cartCount }}</span>
+            </x-sidebar-link>
             <x-sidebar-link name="Contact" :route="'page.contact'" icon="{{ asset('storage/svgs/contact.svg') }}"/>
             <x-sidebar-link name="About" :route="'page.about'" icon="{{ asset('storage/svgs/about.svg') }}"/>
         </ul>
@@ -51,13 +58,8 @@
     @endguest
 </section>
 <script>
-    {{--When sidebar-button is clicked using jquery, show sidebar.--}}
     $(".sidebar-button").click(function () {
-        // make animation of sidebar
-        $("#sidebar").toggleClass("hidden");
-        // add animation to sidebar, when sidebar opens it comes down from top, when it closes it goes up from bottom
-        $("#sidebar").toggleClass("top-0");
-        $("#sidebar").toggleClass("bottom-0");
-
+        $("#sidebar").slideToggle();
+        $("#main-container").toggleClass("hidden");
     })
 </script>
