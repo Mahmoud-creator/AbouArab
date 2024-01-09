@@ -62,10 +62,10 @@
                     dataLabels: {enabled: false},
                     stroke: {curve: "smooth"},
                     series: [{
-                        name: "Teachers",
+                        name: "Orders",
                         color: '#3D5EE1',
                         data: [45, 60, 75, 51, 42, 42, 30]
-                    }, {name: "Students", color: '#70C4CF', data: [24, 48, 56, 32, 34, 52, 25]}],
+                    }, {name: "Customers", color: '#70C4CF', data: [24, 48, 56, 32, 34, 52, 25]}],
                     xaxis: {categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],}
                 }
                 let chart = new ApexCharts(document.querySelector("#users"), options);
@@ -77,10 +77,10 @@
                     dataLabels: {enabled: false},
                     stroke: {curve: "straight"},
                     series: [{
-                        name: "Teachers",
+                        name: "Orders",
                         color: '#3D5EE1',
                         data: [45, 60, 75, 51, 42, 42, 30]
-                    }, {name: "Students", color: '#70C4CF', data: [24, 48, 56, 32, 34, 52, 25]}],
+                    }, {name: "Customers", color: '#70C4CF', data: [24, 48, 56, 32, 34, 52, 25]}],
                     xaxis: {categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],}
                 }
                 let chart = new ApexCharts(document.querySelector("#school-area"), options);
