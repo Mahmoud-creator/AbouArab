@@ -18,3 +18,8 @@ yarn-error.log
 /.idea
 /.vscode
 AbouArabEmailCredentials.txt
+SSH.Key.Pairs
+id_rsa.pub
+id_rsa
+abouarab.public.key
+abouarab.private.key.ppk
