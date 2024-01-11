@@ -13,7 +13,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     {{--Project Scripts & Styles--}}
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
+{{--    @vite(['resources/js/app.js', 'resources/css/app.css'])--}}
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script type="module" src="{{ asset('js/app.js') }}"></script>
+
     @yield('header-scripts')
 </head>
 
