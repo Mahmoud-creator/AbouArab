@@ -7,6 +7,7 @@ use App\Models\ProductAddon;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -36,8 +37,11 @@ class ProductController extends Controller
 
         try {
             DB::BeginTransaction();
+
             $image = $request->file('image');
+
             $path = $image->store('public/images');
+
             $url = 'storage/' . str_replace('public/', '', $path);
 
 
@@ -138,6 +142,11 @@ class ProductController extends Controller
     {
         $product = Product::find($request->id);
         $product->delete();
+        // delete also the picture
+        if ($product->image) {
+            $path = str_replace('storage/', 'public/', $product->image);
+            Storage::delete($path);
+        }
         return back()->with(['success' => 'Product deleted successfully']);
     }
 }

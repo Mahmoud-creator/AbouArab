@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('main')
     <section class="w-full h-screen text-center space-y-10">
-        <div class="w-full rounded-xl flex flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; height: 500px">
+        <div class="w-full rounded-xl flex flex-col-reverse lg:flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; min-height: 500px">
             <!-- Section 1: Kaake -->
             <div class="flex-1">
                 <div class="p-9">
@@ -13,9 +13,10 @@
                         <p class="leading-loose tracking-wide mb-4 text-red-600">Made with love and sprinkled with a touch of nostalgia.</p>
                         <p class="leading-loose tracking-wide mb-4 text-gray-700">Our Kaake is the perfect companion for your tea or coffee.</p>
                     </div>
-                </div>
-                <div class="text-2xl font-bold text-red-600">
-                    <a href="{{ route('products.category', 1) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+
+                    <div class="text-2xl font-bold text-red-600">
+                        <a href="{{ route('products.category', 1) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    </div>
                 </div>
             </div>
             <div class="flex-1">
@@ -24,7 +25,7 @@
             </div>
         </div>
 
-        <div class="w-full rounded-xl flex flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; height: 500px">
+        <div class="w-full rounded-xl flex flex-col lg:flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; min-height: 500px">
             <!-- Section 2: Kaake Double and Triple Cheese -->
             <div class="flex-1">
                 <img src="{{ asset('storage/banners/pizza-double.jpg') }}" alt="Cheese"
@@ -43,14 +44,14 @@
 
                     </div>
 
-                </div>
-                <div class="text-2xl font-bold text-red-600">
-                    <a href="{{ route('products.category', 2) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    <div class="text-2xl font-bold text-red-600">
+                        <a href="{{ route('products.category', 2) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="w-full rounded-xl flex flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; height: 500px">
+        <div class="w-full rounded-xl flex flex-col-reverse lg:flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; min-height: 500px">
             <!-- Section 3: Pizza -->
             <div class="flex-1">
                 <div class="p-9">
@@ -63,9 +64,9 @@
                         <p class="mb-4 leading-loose tracking-wide text-gray-700">Crafted with the finest ingredients and baked to perfection, our pizzas promise to satisfy your cravings and delight your taste buds.</p>
                     </div>
 
-                </div>
-                <div class="text-2xl font-bold text-red-600">
-                    <a href="{{ route('products.category', 3) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    <div class="text-2xl font-bold text-red-600">
+                        <a href="{{ route('products.category', 3) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    </div>
                 </div>
             </div>
             <div class="flex-1">
@@ -74,7 +75,7 @@
             </div>
         </div>
 
-        <div class="w-full rounded-xl flex flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; height: 500px">
+        <div class="w-full rounded-xl flex flex-col lg:flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; min-height: 500px">
             <!-- Section 4: Beverages -->
             <div class="flex-1">
                 <img src="{{ asset('storage/banners/beverages.jpg') }}" alt="Beverages"
@@ -91,14 +92,14 @@
                         <p class="mb-4 leading-loose tracking-wide text-gray-700">From aromatic coffees to fruity concoctions, our beverages are the perfect complement to your delicious meal.</p>
                     </div>
 
-                </div>
-                <div class="text-2xl font-bold text-red-600">
-                    <a href="{{ route('products.category', 4) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    <div class="text-2xl font-bold text-red-600">
+                        <a href="{{ route('products.category', 4) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="w-full rounded-xl flex flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; height: 500px">
+        <div class="w-full rounded-xl flex flex-col-reverse lg:flex-row mx-auto mt-10 shadow-md bg-white" style="width: 80%; min-height: 500px">
             <!-- Section 5: Desserts -->
             <div class="flex-1">
                 <div class="p-9">
@@ -111,9 +112,9 @@
                         <p class="mb-4 leading-loose tracking-wide text-gray-700">From creamy cheesecakes to mouthwatering chocolate treats, our desserts are the perfect finale to your dining experience.</p>
                     </div>
 
-                </div>
-                <div class="text-2xl font-bold text-red-600">
-                    <a href="{{ route('products.category', 5) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    <div class="text-2xl font-bold text-red-600">
+                        <a href="{{ route('products.category', 5) }}" class="px-4 py-2 inline-block text-white bg-red-600 hover:bg-red-700 rounded-md transition duration-300">Try now</a>
+                    </div>
                 </div>
             </div>
             <div class="flex-1">

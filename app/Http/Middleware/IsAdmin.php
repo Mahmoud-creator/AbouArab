@@ -19,6 +19,6 @@ class IsAdmin
             return $next($request);
         }
 
-        return redirect()->route('admin.login')->with('error', 'Your credentials did not match our records!');
+        return redirect()->route('admin.login');
     }
 }

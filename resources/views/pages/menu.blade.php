@@ -5,7 +5,8 @@
 @endsection
 @section('main')
     <div class="w-full flex flex-row">
-        <div style="width: 75%">
+{{--        <div style="width: 75%">--}}
+        <div>
             <div class="swiper menu-swiper">
                 <div class="swiper-wrapper">
                     @foreach(\App\Models\Category::all() as $category)
@@ -19,9 +20,9 @@
                 @endforeach
             </div>
         </div>
-        <div style="width: 25%">
-            @include('components.sideCart')
-        </div>
+{{--        <div style="width: 25%">--}}
+{{--            @include('components.sideCart')--}}
+{{--        </div>--}}
     </div>
     <x-product-modal/>
 @endsection
