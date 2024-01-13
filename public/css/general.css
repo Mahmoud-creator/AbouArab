@@ -1,0 +1,63 @@
+#main-container {
+    background-color: #f4c637;
+    height: 100vh;
+}
+
+#main-footer {
+    height: 20vh;
+    display: flex;
+    align-items: end;
+}
+
+.about-title {
+    font-size: 2rem;
+}
+
+.about-description {
+    font-size: 1.4rem;
+}
+
+#first {
+    background-color: #f4c637;
+}
+
+#second {
+    background-color: #ef4444;
+}
+
+#third {
+    background-color: #faebd7;
+}
+
+.registration-container {
+    width: 80%;
+    height: 700px;
+}
+
+.login-container {
+    width: 80%;
+    height: 500px
+}
+
+@media (max-width: 768px) {
+
+    #main-footer {
+        height: auto;
+        display: flex;
+        align-items: end;
+    }
+
+
+    .registration-container {
+        width: 100%;
+        height: auto;
+    }
+
+
+    .login-container {
+        width: 100%;
+        height: auto;
+    }
+
+
+}
