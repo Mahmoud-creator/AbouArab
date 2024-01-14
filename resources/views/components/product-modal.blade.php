@@ -10,7 +10,7 @@
             <div id="product-modal-panel"
                  class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl">
                 <div class="bg-white">
-                    <div class="sm:flex flex sm:items-start h-full product-modal-container">
+                    <div class="flex flex-col md:flex-row sm:items-start h-full product-modal-container">
                         <div class="product-modal-left-box flex-1 flex-grow h-full text-center sm:ml-4 sm:mt-0 sm:text-left">
                             <input type="hidden" id="product-modal-id" data-product-id="">
                             <img class="object-center w-full object-cover"
