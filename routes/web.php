@@ -32,14 +32,18 @@ Route::get('/menu/{category}', [CategoryController::class, 'getProductCategory']
 
 
 Route::middleware(['auth'])->group(function(){
-    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
-    Route::get('/cart-total', [CartController::class, 'getTotalPrice'])->name('cart.total');
-    Route::post('/cart-addons', [CartController::class, 'storeWithAddons'])->name('cart.store.addons');
-    Route::post('/cart/delete/{itemId}', [CartController::class, 'destroy'])->name('cart.delete');
+    Route::controller(CartController::class)->group(function(){
+        Route::post('/cart','store')->name('cart.store');
+        Route::get('/cart-total','getTotalPrice')->name('cart.total');
+        Route::post('/cart-addons','storeWithAddons')->name('cart.store.addons');
+        Route::post('/cart/delete','destroy')->name('cart.delete');
+        Route::post('/cart/clear','clear')->name('cart.clear');
+        Route::post('/cart-quantity','updateQuantity')->name('cart.quantity');
+        Route::post('/cart-quantity-mini','updateQuantityMini')->name('cart.mini.quantity');
+    });
+
     Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
     Route::get('/bag', [PageController::class, 'bag'])->name('page.bag');
-    Route::post('/cart-quantity', [CartController::class, 'updateQuantity'])->name('cart.quantity');
-
     Route::post('checkout', [OrderController::class, 'store'])->name('checkout.store');
 });
 

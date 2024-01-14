@@ -18,7 +18,7 @@ class OrderController extends Controller
     {
         $title = 'Manage Orders';
 
-        $orders = Order::orderByDesc('created_at')->get();
+        $orders = Order::orderByDesc('created_at')->paginate(15);
 
         return view('admin.orders', ['orders' => $orders, 'title' => $title]);
     }

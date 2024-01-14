@@ -1,8 +1,12 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="w-full">
-        <div class="bg-white shadow-md rounded my-6 overflow-auto">
-            @if(count($users))
+        @if(count($users))
+            <div class="flex flex-row gap-2 ml-3 md:ml0 md:w-48 w-full">
+                <input type="text" class="rounded-md border-0 placeholder-gray-300" value="" id="search-users" placeholder="Search users">
+                <button class="px-2 py-1.5 bg-green-500 text-white hover:bg-green-400 rounded-md border-0">Search</button>
+            </div>
+            <div class="bg-white shadow-md rounded my-6 overflow-auto">
                 <table class="min-w-max w-full table-auto">
                     <thead>
                     <tr class="text-gray-600 uppercase text-sm leading-normal">
@@ -68,19 +72,22 @@
                     @endforeach
                     </tbody>
                 </table>
-            @else
+            </div>
+            {{ $users->links('vendor.pagination.tailwind') }}
+        @else
+            <div class="bg-white shadow-md rounded my-6 overflow-auto">
                 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
                     <h3 class="py-3 px-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">No
                         users</h3>
                 </div>
-            @endif
-        </div>
+            </div>
+        @endif
     </div>
 @endsection
 @section('footer-scripts')
     <script>
-        $(document).ready(function() {
-            $('.delete-user').on('click', function (){
+        $(document).ready(function () {
+            $('.delete-user').on('click', function () {
                 let userId = $(this).data('user-id');
                 let row = $(this).parent().parent().parent();
                 confirm("Are you sure you want to delete this user?") ? $.ajax({

@@ -1,8 +1,0 @@
-@import "common.css";
-
-.bg-white {
-    background-color: var(--white)!important;
-}
-.text-white{
-    color: var(--white)!important;
-}

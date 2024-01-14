@@ -1,8 +1,0 @@
-@import "swiper/menu.css";
-@import "sidebar.css";
-@import "general.css";
-@import "product-card.css";
-@import "product-modal.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

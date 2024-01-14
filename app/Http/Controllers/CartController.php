@@ -16,7 +16,7 @@ class CartController extends Controller
         $user = auth()->user();
 
         $product = Product::findOrFail($productId);
-        $cartItem = Cart::where('user_id', $user->id)->where('product_id', $product->id)->first();
+        $cartItem = Cart::where('user_id', $user->id)->where('product_id', $product->id)->where('addons', null)->first();
 
         if ($cartItem) {
             $cartItem->increment('quantity');
@@ -61,6 +61,11 @@ class CartController extends Controller
     {
         $itemId = $request->itemId;
         Cart::findOrFail($itemId)->delete();
+
+        if ($request->ajax()) {
+            return response()->json(['message' => 'Product removed from cart']);
+        }
+
         return back()->with(['success' => 'Product removed from cart']);
     }
 
@@ -75,7 +80,10 @@ class CartController extends Controller
         $product = Product::findOrFail($productId);
         $cartItems = Cart::where('user_id', $user->id)->where('product_id', $product->id)->get();
 
+
         $cartItem = $this->getTheCartItemIfExist($cartItems, $addons);
+
+//        Log::info(json_encode([['productId' => $productId, 'type' => gettype($productId)],['addons' => $addons, 'type' => gettype($addons)],['quantity' => $quantity, 'type' => gettype($quantity)],['product' => $product, 'type' => gettype($product)],['cartItems' => $cartItems, 'type' => gettype($cartItems)],['cartItem' => $cartItem, 'type' => gettype($cartItem)]]));
 
         if ($cartItem) {
             $cartItem->increment('quantity', $quantity);
@@ -101,15 +109,62 @@ class CartController extends Controller
     public function getTheCartItemIfExist($cartItems, $addons)
     {
         foreach ($cartItems as $cartItem) {
-            if (empty(array_diff(json_decode($cartItem->addons ?? "[]") ?? [], $addons ?? []))) {
-                return $cartItem;
+            $cartItemAddons = json_decode($cartItem->addons);
+
+            // If the cart item has no addons and the provided addons are also empty,
+            // or if the cart item's addons and the provided addons are the same,
+            // return the cart item
+            if ((empty($cartItemAddons) && empty($addons)) ||
+                (!empty($cartItemAddons) && !empty($addons))) {
+                sort($cartItemAddons);
+                sort($addons);
+                if ($cartItemAddons == $addons) {
+                    return $cartItem;
+                }
             }
         }
+
+        // If no matching cart item is found, return null
         return null;
     }
+
 
     public function getTotalPrice(Request $request)
     {
         return response()->json(['total' => Cart::getTotalPrice()]);
+    }
+
+    public function clear(Request $request)
+    {
+        Cart::where('user_id', auth()->user()->id)->delete();
+        return response()->json(['message' => 'Cart cleared successfully']);
+    }
+
+    public function updateQuantityMini(Request $request)
+    {
+        $itemId = $request->itemId;
+        $action = $request->action;
+
+        $item = Cart::findOrFail($itemId);
+
+        $quantity = $item->quantity;
+
+        if ($quantity < 1 || $quantity > 100) {
+            return response()->json([
+                'message' => 'Quantity must be greater than 0 and less than 100',
+            ]);
+        }
+
+        if ($action == 'increment') {
+            $quantity++;
+        } elseif ($action == 'decrement') {
+            $quantity--;
+        }
+
+        $item->update([
+            'quantity' => $quantity
+        ]);
+
+        return response()->json(['message' => 'Quantity updated successfully']);
     }
 }

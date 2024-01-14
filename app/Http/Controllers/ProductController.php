@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         $title = 'Manage Products';
-        $products = Product::orderByDesc('updated_at')->get();
+        $products = Product::orderByDesc('updated_at')->paginate(15);
         return view('admin.products', ['products' => $products, 'title' => $title]);
     }
 
@@ -89,29 +89,21 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'description' => 'required',
             'category' => 'required|exists:categories,id',
-            'image' => 'image|mimes:jpeg,png,jpg|max:4096',
+            'image' => 'image|mimes:jpeg,png,jpg|max:8192',
         ]);
-
 
         try {
             DB::BeginTransaction();
 
             $product = Product::findOrFail($request->productId);
 
-            $url = $product->image;
+            $oldImageUrl = $product->image;
 
-            if ($request->image){
-                $image = $request->file('image');
-                $path = $image->store('public/images');
-                $url = 'storage/' . str_replace('public/', '', $path);
+            if ($request->hasFile('image')) {
+                $this->updateProductWithImage($request, $product, $oldImageUrl);
+            } else {
+                $this->updateProduct($request, $product);
             }
-
-            $product->update([
-                'name' => $request->name,
-                'price' => $request->price,
-                'description' => $request->description,
-                'image' => $url,
-            ]);
 
             ProductAddon::where('product_id', $request->productId)
                 ->whereNotIn('addon_id', $request->addons ?? [])
@@ -142,11 +134,38 @@ class ProductController extends Controller
     {
         $product = Product::find($request->id);
         $product->delete();
-        // delete also the picture
         if ($product->image) {
             $path = str_replace('storage/', 'public/', $product->image);
             Storage::delete($path);
         }
         return back()->with(['success' => 'Product deleted successfully']);
+    }
+
+    public function updateProductWithImage($request, $product, $oldImageUrl)
+    {
+        if ($oldImageUrl) {
+            $oldImagePath = str_replace('storage/', 'public/', $oldImageUrl);
+            Storage::delete($oldImagePath);
+        }
+
+        $image = $request->file('image');
+        $path = $image->store('public/images');
+        $newImageUrl = 'storage/' . str_replace('public/', '', $path);
+
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'image' => $newImageUrl,
+        ]);
+    }
+
+    public function updateProduct($request, $product)
+    {
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+        ]);
     }
 }

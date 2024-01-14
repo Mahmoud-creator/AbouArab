@@ -10,8 +10,8 @@
             <div id="product-modal-panel"
                  class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl">
                 <div class="bg-white">
-                    <div class="sm:flex sm:items-start h-full product-modal-container">
-                        <div class="product-modal-left-box basis-1/2 h-full text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <div class="sm:flex flex sm:items-start h-full product-modal-container">
+                        <div class="product-modal-left-box flex-1 flex-grow h-full text-center sm:ml-4 sm:mt-0 sm:text-left">
                             <input type="hidden" id="product-modal-id" data-product-id="">
                             <img class="object-center w-full object-cover"
                                  id="product-modal-image"
@@ -37,7 +37,7 @@
                                    id="product-modal-price"></p>
                             </div>
                         </div>
-                        <div class="product-modal-right-box basis-1/2 h-full mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left p-6 flex flex-col justify-between">
+                        <div class="product-modal-right-box flex-1 flex-grow h-full mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left p-6 flex flex-col justify-between">
                             <div>
                                 <h3 class="font-semibold uppercase text-gray-800 my-3 ">Complete Your
                                     Meal</h3>
@@ -47,7 +47,7 @@
                             <div>
                                 <div class="w-full mt-8">
                                     <button id="confirm-button" type="button"
-                                            class="w-full rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3">
+                                            class="w-full rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500">
                                         Add to cart
                                     </button>
                                 </div>
@@ -86,7 +86,6 @@
                 return $(this).val();
             }).toArray();
 
-            console.log(productAddons, typeof(productAddons));
             $.ajax({
                 'url': '{{ route('cart.store.addons') }}',
                 'type': 'POST',
@@ -106,6 +105,8 @@
                     setTimeout(function () {
                         $('#flash-message-container').toggle('hidden')
                     }, 2000);
+
+                    $('#sideCart').load(window.location.href + ' #sideCart');
                 },
                 'error': function (data) {
                     console.log('reached error');

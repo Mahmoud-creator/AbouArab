@@ -1,3 +1,16 @@
+@props(['title' => $title,
+        'totalProfit' => $totalProfit,
+        'pendingProfit' => $pendingProfit,
+        'totalOrders' => $totalOrders,
+        'totalUsers' => $totalUsers,
+        'todayOrders' => $todayOrders,
+        'activeCarts' => $activeCarts,
+        'totalProducts' => $totalProducts,
+        'totalAddons' => $totalAddons,
+        'ordersStats' => $ordersStats,
+        'profitStats' => $profitStats
+        ])
+
 @extends('layouts.dashboard')
 
 @section('header-scripts')
@@ -6,50 +19,92 @@
 
 @section('content')
 
-    <img src="{{ asset('storage/icons/1.svg') }}" alt="">
-    <img src="{{ asset('storage/icons/2.svg') }}" alt="">
-    <img src="{{ asset('storage/icons/3.svg') }}" alt="">
-    <img src="{{ asset('storage/icons/4.svg') }}" alt="">
-    <img src="{{ asset('storage/icons/5.svg') }}" alt="">
-    <img src="{{ asset('storage/icons/6.svg') }}" alt="">
+
+    <!-- Start Content -->
+    <div class="grid grid-cols-1 gap-5 mt-6 sm:grid-cols-2 lg:grid-cols-4 mb-4 md:mb-8">
+        <section>
+            <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                <div class="flex items-start justify-between">
+                    <div class="flex flex-col space-y-2">
+                        <span class="text-gray-800">Total Profit</span>
+                        <span class="text-lg font-semibold">${{ $totalProfit }}</span>
+                    </div>
+                    <svg class="w-12 h-12 text-gray-800 dark:text-primary-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="inline-block px-2 text-sm text-white bg-[#00e396] rounded">${{ $pendingProfit }}</span>
+                    <span>Pending</span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                <div class="flex items-start justify-between">
+                    <div class="flex flex-col space-y-2">
+                        <span class="text-gray-800">Total Orders</span>
+                        <span class="text-lg font-semibold">{{ $totalOrders }}</span>
+                    </div>
+                    <svg class="w-12 h-12 text-gray-800 dark:text-primary-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="inline-block px-2 text-sm text-white bg-[#00e396] rounded">{{ $todayOrders }}</span>
+                    <span>Today's Orders</span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                <div class="flex items-start justify-between">
+                    <div class="flex flex-col space-y-2">
+                        <span class="text-gray-800">Total Users</span>
+                        <span class="text-lg font-semibold">{{ $totalUsers }}</span>
+                    </div>
+                    <svg class="w-12 h-12 text-gray-800 dark:text-primary-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="inline-block px-2 text-sm text-white bg-[#00e396] rounded">{{ $activeCarts }}</span>
+                    <span>Active Carts</span>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+                <div class="flex items-start justify-between">
+                    <div class="flex flex-col space-y-2">
+                        <span class="text-gray-800">Total Products</span>
+                        <span class="text-lg font-semibold">{{ $totalProducts }}</span>
+                    </div>
+                    <svg class="w-12 h-12 text-gray-800 dark:text-primary-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="inline-block px-2 text-sm text-white bg-[#00e396] rounded">{{ $totalAddons }}</span>
+                    <span>Products Addons</span>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <div class="flex flex-wrap">
         <div class="w-full md:w-1/2">
+            <p class="text-gray-600 font-semibold text-md ml-6 md:ml-10">Users per month:</p>
             <div id="users"></div>
         </div>
         <div class="w-full md:w-1/2">
-            <div id="school-area"></div>
-        </div>
-        <div class="w-full md:w-1/2">
-            <div id="bar"></div>
-        </div>
-        <div class="w-full md:w-1/2">
-            <div id="s-line"></div>
-        </div>
-        <div class="w-full md:w-1/2">
-            <div id="s-line-area"></div>
-        </div>
-
-        <div class="w-full md:w-1/2">
+            <p class="text-gray-600 font-semibold text-md ml-6 md:ml-10">Orders per month:</p>
             <div id="s-col"></div>
         </div>
-        <div class="w-full md:w-1/2">
-            <div id="s-col-stacked"></div>
-        </div>
-        <div class="w-full md:w-1/2">
-            <div id="s-bar"></div>
-        </div>
-        <div class="w-full md:w-1/2">
-            <div id="mixed-chart"></div>
-        </div>
-        <div class="w-full md:w-1/2">
-            <div id="donut-chart"></div>
-        </div>
-        <div class="w-full md:w-1/2">
-            <div id="radial-chart"></div>
+        <div class="w-full">
+            <div id="s-line-area"></div>
         </div>
     </div>
-
 @endsection
 
 @section('footer-scripts')
@@ -69,63 +124,6 @@
                     xaxis: {categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],}
                 }
                 let chart = new ApexCharts(document.querySelector("#users"), options);
-                chart.render();
-            }
-            if ($('#school-area').length > 0) {
-                let options = {
-                    chart: {height: 350, type: "area", toolbar: {show: false},},
-                    dataLabels: {enabled: false},
-                    stroke: {curve: "straight"},
-                    series: [{
-                        name: "Orders",
-                        color: '#3D5EE1',
-                        data: [45, 60, 75, 51, 42, 42, 30]
-                    }, {name: "Customers", color: '#70C4CF', data: [24, 48, 56, 32, 34, 52, 25]}],
-                    xaxis: {categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],}
-                }
-                let chart = new ApexCharts(document.querySelector("#school-area"), options);
-                chart.render();
-            }
-            if ($('#bar').length > 0) {
-                let optionsBar = {
-                    chart: {
-                        type: 'bar',
-                        height: 350,
-                        width: '100%',
-                        stacked: false,
-                        toolbar: {show: false},
-                    },
-                    dataLabels: {enabled: false},
-                    plotOptions: {bar: {columnWidth: '55%', endingShape: 'rounded'},},
-                    stroke: {show: true, width: 2, colors: ['transparent']},
-                    series: [{
-                        name: "Boys",
-                        color: '#70C4CF',
-                        data: [420, 532, 516, 575, 519, 517, 454, 392, 262, 383, 446, 551],
-                    }, {
-                        name: "Girls",
-                        color: '#3D5EE1',
-                        data: [336, 612, 344, 647, 345, 563, 256, 344, 323, 300, 455, 456],
-                    }],
-                    labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
-                    xaxis: {labels: {show: false}, axisBorder: {show: false}, axisTicks: {show: false},},
-                    yaxis: {axisBorder: {show: false}, axisTicks: {show: false}, labels: {style: {colors: '#777'}}},
-                    title: {text: '', align: 'left', style: {fontSize: '18px'}}
-                }
-                let chartBar = new ApexCharts(document.querySelector('#bar'), optionsBar);
-                chartBar.render();
-            }
-            if ($('#s-line').length > 0) {
-                let sline = {
-                    chart: {height: 350, type: 'line', zoom: {enabled: false}, toolbar: {show: false,}},
-                    dataLabels: {enabled: false},
-                    stroke: {curve: 'straight'},
-                    series: [{name: "Desktops", data: [10, 41, 35, 51, 49, 62, 69, 91, 148]}],
-                    title: {text: 'Product Trends by Month', align: 'left'},
-                    grid: {row: {colors: ['#f1f2f3', 'transparent'], opacity: 0.5},},
-                    xaxis: {categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],}
-                }
-                let chart = new ApexCharts(document.querySelector("#s-line"), sline);
                 chart.render();
             }
             if ($('#s-line-area').length > 0) {
@@ -170,88 +168,6 @@
                 let chart = new ApexCharts(document.querySelector("#s-col"), sCol);
                 chart.render();
             }
-            if ($('#s-col-stacked').length > 0) {
-                let sColStacked = {
-                    chart: {height: 350, type: 'bar', stacked: true, toolbar: {show: false,}},
-                    responsive: [{breakpoint: 480, options: {legend: {position: 'bottom', offsetX: -10, offsetY: 0}}}],
-                    plotOptions: {bar: {horizontal: false,},},
-                    series: [{name: 'PRODUCT A', data: [44, 55, 41, 67, 22, 43]}, {
-                        name: 'PRODUCT B',
-                        data: [13, 23, 20, 8, 13, 27]
-                    }, {name: 'PRODUCT C', data: [11, 17, 15, 15, 21, 14]}, {
-                        name: 'PRODUCT D',
-                        data: [21, 7, 25, 13, 22, 8]
-                    }],
-                    xaxis: {
-                        type: 'datetime',
-                        categories: ['01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT', '01/05/2011 GMT', '01/06/2011 GMT'],
-                    },
-                    legend: {position: 'right', offsetY: 40},
-                    fill: {opacity: 1},
-                }
-                let chart = new ApexCharts(document.querySelector("#s-col-stacked"), sColStacked);
-                chart.render();
-            }
-            if ($('#s-bar').length > 0) {
-                let sBar = {
-                    chart: {height: 350, type: 'bar', toolbar: {show: false,}},
-                    plotOptions: {bar: {horizontal: true,}},
-                    dataLabels: {enabled: false},
-                    series: [{data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]}],
-                    xaxis: {categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan', 'United States', 'China', 'Germany'],}
-                }
-                let chart = new ApexCharts(document.querySelector("#s-bar"), sBar);
-                chart.render();
-            }
-            if ($('#mixed-chart').length > 0) {
-                let options = {
-                    chart: {height: 350, type: 'line', toolbar: {show: false,}},
-                    series: [{
-                        name: 'Website Blog',
-                        type: 'column',
-                        data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
-                    }, {name: 'Social Media', type: 'line', data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]}],
-                    stroke: {width: [0, 4]},
-                    title: {text: 'Traffic Sources'},
-                    labels: ['01 Jan 2001', '02 Jan 2001', '03 Jan 2001', '04 Jan 2001', '05 Jan 2001', '06 Jan 2001', '07 Jan 2001', '08 Jan 2001', '09 Jan 2001', '10 Jan 2001', '11 Jan 2001', '12 Jan 2001'],
-                    xaxis: {type: 'datetime'},
-                    yaxis: [{title: {text: 'Website Blog',},}, {opposite: true, title: {text: 'Social Media'}}]
-                }
-                let chart = new ApexCharts(document.querySelector("#mixed-chart"), options);
-                chart.render();
-            }
-            if ($('#donut-chart').length > 0) {
-                let donutChart = {
-                    chart: {height: 350, type: 'donut', toolbar: {show: false,}},
-                    series: [44, 55, 41, 17],
-                    responsive: [{breakpoint: 480, options: {chart: {width: 200}, legend: {position: 'bottom'}}}]
-                }
-                let donut = new ApexCharts(document.querySelector("#donut-chart"), donutChart);
-                donut.render();
-            }
-            if ($('#radial-chart').length > 0) {
-                let radialChart = {
-                    chart: {height: 350, type: 'radialBar', toolbar: {show: false,}},
-                    plotOptions: {
-                        radialBar: {
-                            dataLabels: {
-                                name: {fontSize: '22px',},
-                                value: {fontSize: '16px',},
-                                total: {
-                                    show: true, label: 'Total', formatter: function (w) {
-                                        return 249
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    series: [44, 55, 67, 83],
-                    labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
-                }
-                let chart = new ApexCharts(document.querySelector("#radial-chart"), radialChart);
-                chart.render();
-            }
-
 
         });
 

@@ -4,9 +4,8 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.0/lazysizes.min.js"></script>
 @endsection
 @section('main')
-    <div class="w-full flex flex-row">
-{{--        <div style="width: 75%">--}}
-        <div>
+    <div class="w-full flex flex-row h-full">
+        <div class="w-full md:w-3/4">
             <div class="swiper menu-swiper">
                 <div class="swiper-wrapper">
                     @foreach(\App\Models\Category::all() as $category)
@@ -19,12 +18,13 @@
                     <x-product-card class="p-5 pl-sm-0 w-full" :product="$product"></x-product-card>
                 @endforeach
             </div>
+            <x-product-modal/>
         </div>
-{{--        <div style="width: 25%">--}}
-{{--            @include('components.sideCart')--}}
-{{--        </div>--}}
+
+        <div class="hidden md:block md:w-1/4">
+            @include('components.sideCart')
+        </div>
     </div>
-    <x-product-modal/>
 @endsection
 @section('scripts')
     <script>
@@ -49,6 +49,8 @@
                         setTimeout(function () {
                             $('#flash-message-container').toggle('hidden')
                         }, 2000);
+
+                        $('#sideCart').load(window.location.href + ' #sideCart');
                     }
                 })
             });
@@ -81,7 +83,7 @@
 
                 let addons = '';
                 productAddons.forEach(function (productAddon) {
-                        addons +=
+                    addons +=
                         `<div class="flex items-center me-4">
                         <input id="red-checkbox-${productAddon.slug}" type="checkbox" value="${productAddon.slug}" name="product-addons" class="product-addons w-4 h-4 text-red-600 bg-red-100 border-gray-300 rounded-full focus:ring-red-500 focus:ring-2">
                         <label for="red-checkbox-${productAddon.slug}" class="ms-2 text-sm font-medium text-gray-900">${productAddon.name}
@@ -100,6 +102,7 @@
                 }, 10);
 
             }
+
             function hideModal() {
                 $modalBackdrop.addClass('opacity-0');
                 $modalPanel.removeClass('opacity-100 translate-y-0 sm:scale-100');
