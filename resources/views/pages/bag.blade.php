@@ -1,9 +1,9 @@
-@props(["products" => [], "customerAddress" => null])
+@props(["products" => [], "customerAddress" => null, "checkout" => $checkout])
 @extends('layouts.app')
 @section('main')
     @if( App\Models\Cart::where('user_id', auth()->user()->id)->count())
         <div class="max-w-6xl mx-auto">
-            <div class="bg-white shadow-md rounded my-6">
+            <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
                 <table class="min-w-max w-full table-auto">
                     <thead>
                     <tr class="text-gray-600 uppercase text-sm leading-normal">
@@ -22,11 +22,11 @@
                             $product = $cartItem->product;
                             $addons = json_decode($cartItem->addons) ?? [];
                         @endphp
-                        <tr class="border-b border-gray-200 hover:bg-gray-100 @if($loop->even) bg-gray-50 @endif">
+                        <tr class="overflow-x-auto border-b border-gray-200 hover:bg-gray-100 @if($loop->even) bg-gray-50 @endif">
                             <td class="py-3 px-6 text-left whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="mr-2">
-                                        <img class="w-40" src="{{ asset($product->image) }}" alt="img"/>
+                                        <img class="w-12 md:w-40" src="{{ asset($product->image) }}" alt="img"/>
                                     </div>
                                 </div>
                             </td>
@@ -80,10 +80,12 @@
                     </tbody>
                 </table>
             </div>
-            <button id="openModalButton"
-                    class="px-3 py-1.5 bg-red-500 hover:bg-red-400 font-semibold transition-all text-white text-2xl float-right">
-                Checkout
-            </button>
+            <div class="text-center w-full md:text-right">
+                <button id="openModalButton"
+                        class="rounded-md mx-auto px-3 py-1.5 bg-red-500 hover:bg-red-400 font-semibold transition-all text-white text-2xl">
+                    Checkout
+                </button>
+            </div>
             <x-checkout-modal :address="$customerAddress"/>
         </div>
     @else
@@ -95,7 +97,13 @@
 
         </div>
     @endif
-
+    @if($checkout)
+        <script>
+            $(() => {
+                $('#openModalButton').click();
+            })
+        </script>
+    @endif
 @endsection
 @section('scripts')
     <script>

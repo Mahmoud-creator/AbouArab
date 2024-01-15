@@ -63,7 +63,7 @@
                 </div>
             </div>
         @endforeach
-        <button class="align-bottom flex flex-row justify-between items-center w-4/6 mx-auto bg-red-500 shadow-md text-white hover:bg-red-400 capitalize px-3 py-1.5 transition-all rounded-md">
+        <button id="checkout-to-cart" class="align-bottom flex flex-row justify-between items-center w-4/6 mx-auto bg-red-500 shadow-md text-white hover:bg-red-400 capitalize px-3 py-1.5 transition-all rounded-md">
             <span>Checkout</span>
             <span class="text-white text-sm font-semibold">${{ \App\Models\Cart::getTotalPrice() }}</span>
         </button>
@@ -78,6 +78,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+    $('#checkout-to-cart').on('click', function (){
+        window.location.href = '{{ route('page.bag') }}/checkout';
+    })
     $('#clear-cart-button').on('click', function () {
         Swal.fire({
             title: 'Clear Cart?',

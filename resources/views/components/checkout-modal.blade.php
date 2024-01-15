@@ -21,23 +21,21 @@
                                     <div class="space-y-6">
                                         <div class="border-b border-gray-900/10 pb-4">
                                             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                                                <div class="sm:col-span-3">
+                                                <div class="col-span-2 md:col-span-3">
                                                     <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Full name</label>
                                                     <div class="mt-2">
                                                         <input type="text" name="name" id="name" autocomplete="given-name" value="{{ auth()->user()->name }}"
                                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
-
-                                                <div class="sm:col-span-3">
+                                                <div class="col-span-2 md:col-span-3">
                                                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                                                     <div class="mt-2">
                                                         <input id="email" name="email" type="email" autocomplete="email" value="{{ auth()->user()->email }}"
                                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
-
-                                                <div class="sm:col-span-3">
+                                                <div class="col-span-2 md:col-span-3">
                                                     <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Region</label>
                                                     <div class="mt-2">
                                                         <select id="region" name="region" autocomplete="region-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -47,15 +45,13 @@
                                                         </select>
                                                     </div>
                                                 </div>
-
-                                                <div class="sm:col-span-3">
+                                                <div class="col-span-2 md:col-span-3">
                                                     <label for="phone" class="block text-sm font-medium leading-6 text-gray-900">Phone number</label>
                                                     <div class="mt-2">
                                                         <input type="text" name="phone" id="phone" autocomplete="phone" value="{{ auth()->user()->phone }}"
                                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
-
                                                 <div class="col-span-2">
                                                     <label for="street_address" class="block text-sm font-medium leading-6 text-gray-900">Street address</label>
                                                     <div class="mt-2">
@@ -74,7 +70,6 @@
                                                         <input type="text" name="floor_number" id="floor_number" value="{{ optional($address)->floor }}" placeholder="ex: 2nd Floor" autocomplete="floor_number" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="pb-4">

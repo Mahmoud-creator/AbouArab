@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function(){
     });
 
     Route::get('/contact', [PageController::class, 'contact'])->name('page.contact');
-    Route::get('/bag', [PageController::class, 'bag'])->name('page.bag');
+    Route::get('/bag/{checkout?}', [PageController::class, 'bag'])->name('page.bag');
     Route::post('checkout', [OrderController::class, 'store'])->name('checkout.store');
 });
 
