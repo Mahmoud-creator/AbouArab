@@ -51,7 +51,7 @@
                                         class="w-full px-3 py-2 rounded-lg focus:outline-none focus:ring focus:ring-red-500">
                                     <option value="" selected disabled>Select Category</option>
                                     @foreach(\App\Models\Category::all() as $category)
-                                        <option value="{{ $category->id }}" @if($product->category->first()->id == $category->id) selected @endif>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if(optional(optional($product->category)->first())->id == $category->id) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
