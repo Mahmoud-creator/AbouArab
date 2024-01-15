@@ -26,6 +26,9 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
         </svg>
     </button>
+    <div class="md:hidden bg-white h-14 w-full text-right flex flex-row-reverse items-center justify-items-end">
+        <p class="mr-2 text-md font-semibold">{{ $title }}</p>
+    </div>
     @include('components.sidebar')
 
     <main id="main-container" class="flex-grow relative overflow-y-auto overflow-x-hidden">

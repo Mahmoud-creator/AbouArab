@@ -1,5 +1,5 @@
-@if(optional(auth()->user())->cart->count() > 0)
-    <div id="sideCart" class="w-full min-h-full pb-10 bg-white">
+@if(optional(optional(auth()->user())->cart)->count() > 0)
+    <div id="sideCart" class="w-full min-h-full pb-10 bg-white sticky top-0 right-0">
         <div class="flex flex-row justify-between">
             <a href="{{ route('page.bag') }}" role="button"
                class="text-gray-700 text-sm p-5 font-bold cursor-pointer hover:text-red-400 transition-all duration-300 ease-in-out">

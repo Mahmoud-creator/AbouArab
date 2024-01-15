@@ -19,44 +19,18 @@
                 @endforeach
             </div>
             <x-product-modal/>
+            <div class="mx-4">
+                {{ $products->links() }}
+            </div>
         </div>
 
-        <div class="hidden md:block md:w-1/4">
+        <div class="hidden md:block md:w-1/5 fixed top-0 right-0" style="height: 100%">
             @include('components.sideCart')
         </div>
     </div>
 @endsection
 @section('scripts')
     <script>
-        $(document).ready(function () {
-
-            // Add to cart
-            $('.add-to-cart').on('click', function () {
-                let id = $(this).data('id');
-                $.ajax({
-                    'url': '{{ route('cart.store') }}',
-                    'type': 'POST',
-                    'data': {
-                        'productId': id,
-                        '_token': '{{ csrf_token() }}',
-                    },
-                    'success': function (data) {
-                        $('#cart-count').slideUp(500, function () {
-                            $(this).text(data.total).slideDown(500);
-                        });
-                        $('#flash-message-container').toggle('hidden');
-                        $('#flash-message').html(data.message);
-                        setTimeout(function () {
-                            $('#flash-message-container').toggle('hidden')
-                        }, 2000);
-
-                        $('#sideCart').load(window.location.href + ' #sideCart');
-                    }
-                })
-            });
-
-        })
-
         $(document).ready(function () {
             const $openModalButton = $('.open-product-modal');
             const $modal = $('#product-modal');
@@ -112,11 +86,35 @@
                 }, 100);
             }
 
-
             // Add event listeners
             $openModalButton.on('click', function () {
                 showModal($(this).parent());
             })
+
+            // Add to cart
+            $('.add-to-cart').on('click', function () {
+                let id = $(this).data('id');
+                $.ajax({
+                    'url': '{{ route('cart.store') }}',
+                    'type': 'POST',
+                    'data': {
+                        'productId': id,
+                        '_token': '{{ csrf_token() }}',
+                    },
+                    'success': function (data) {
+                        $('#cart-count').slideUp(500, function () {
+                            $(this).text(data.total).slideDown(500);
+                        });
+                        $('#flash-message-container').toggle('hidden');
+                        $('#flash-message').html(data.message);
+                        setTimeout(function () {
+                            $('#flash-message-container').toggle('hidden')
+                        }, 2000);
+
+                        $('#sideCart').load(window.location.href + ' #sideCart');
+                    }
+                })
+            });
 
             cancelButton.click(hideModal);
         })

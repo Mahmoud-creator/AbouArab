@@ -2,9 +2,9 @@
 @section('main')
     <div class="login-container flex flex-col md:flex-row container mx-auto md:mt-10 md:w-4/5">
         <div class="flex-1 rounded-tl-lg rounded-bl-lg">
-            <img src="{{ asset('storage/banners/abou-arab.jpg') }}" class="object-cover object-center w-full h-full rounded-tl-xl rounded-bl-xl" alt="">
+            <img src="{{ asset('storage/banners/abou-arab.jpg') }}" class="object-cover object-center w-full h-full md:rounded-tl-xl md:rounded-bl-xl" alt="">
         </div>
-        <div class="flex-1 rounded-tr-lg rounded-br-lg md:max-w-md md:mx-auto bg-white p-8 border shadow-md">
+        <div class="flex-1 md:rounded-tr-lg md:rounded-br-lg md:max-w-md md:mx-auto bg-white p-2 md:p-8 border shadow-md">
             <h2 class="text-2xl font-semibold mb-6">Login to your account</h2>
             <form action="{{ route('user.login') }}" method="POST">
                 @csrf

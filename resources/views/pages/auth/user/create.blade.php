@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('main')
     <div class="registration-container mx-auto md:mt-10 flex flex-col-reverse md:flex-row md:w-4/5">
-        <div class="flex-1 max-w-md mx-auto bg-white p-8 border rounded-tl-lg rounded-bl-lg shadow-md">
+        <div class="flex-1 max-w-md bg-white border md:rounded-tl-lg md:rounded-bl-lg shadow-md md:p-8 md:mx-auto p-4">
             <h2 class="text-2xl font-semibold mb-6">Create a new user account</h2>
             <form action="{{ route('user.create') }}" method="POST">
                 @csrf

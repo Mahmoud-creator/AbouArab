@@ -18,7 +18,7 @@ class PageController extends Controller
     public function menu()
     {
         $title = "Menu | Abou Arab";
-        $products = Product::orderByDesc('id')->get();
+        $products = Product::orderByDesc('id')->simplePaginate(15);
         return view('pages.menu', ['title' => $title, 'products' => $products]);
     }
 
