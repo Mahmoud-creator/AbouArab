@@ -10,4 +10,8 @@ class ProductCategory extends Model
     use HasFactory;
 
     protected static $unguarded = true;
+
+    public function product(){
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }

@@ -19,9 +19,9 @@
                 @endforeach
             </div>
             <x-product-modal/>
-            <div class="mx-4">
-                {{ $products->links() }}
-            </div>
+{{--            <div class="mx-4">--}}
+{{--                {{ $products->links() }}--}}
+{{--            </div>--}}
         </div>
 
         <div class="hidden md:block md:w-1/5 fixed top-0 right-0" style="height: 100%">
