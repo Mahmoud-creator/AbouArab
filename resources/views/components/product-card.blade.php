@@ -15,16 +15,10 @@
                 <p class="font-bold text-xl">{{ $product->name }}</p>
                 <p class="font-bold text-red-500 text-lg">$ {{ $product->price }}</p>
                 <p class="font-light text-sm text-gray-700">{{ $product->description }}</p>
-                <div class="my-6">
-                    @if(auth()->user() && (!isset($isAdmin) || !$isAdmin))
-                        <button data-id="{{ $product->id }}" class="rounded add-to-cart bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>
-                        <button data-id="{{ $product->id }}" class="rounded open-product-modal transform shadow-md bg-transparent text-red-500 hover:text-white hover:bg-red-500 capitalize px-3 py-1.5 transition-all">Customize</button>
-                    @else
-                        @if((!isset($isAdmin) || !$isAdmin))
-                            <a role="button" href="{{ route('user.login') }}" class="rounded add-to-cart bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</a>
-                        @endif
-                    @endif
-                </div>
+                @if(auth()->user() && (!isset($isAdmin) || !$isAdmin))
+                    <button data-id="{{ $product->id }}" class="rounded add-to-cart bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>
+                    <button data-id="{{ $product->id }}" class="rounded open-product-modal transform shadow-md bg-transparent text-red-500 hover:text-white hover:bg-red-500 capitalize px-3 py-1.5 transition-all">Customize</button>
+                @endif
                 @if(isset($isAdmin) && $isAdmin)
                     <div class="flex justify-between">
                         <form action="{{ route('admin.products.delete') }}" method="POST">

@@ -111,7 +111,7 @@
                             $('#flash-message-container').toggle('hidden')
                         }, 2000);
 
-                        $('#sideCart').load(window.location.href + ' #sideCart');
+                        $('#sideCart').load(window.location.href);
                     }
                 })
             });
