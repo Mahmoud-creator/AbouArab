@@ -17,7 +17,6 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-
         $imageDirectoryPath = public_path('storage/images');
         $imageFiles = File::files($imageDirectoryPath);
         $randomImage = $imageFiles[array_rand($imageFiles)];

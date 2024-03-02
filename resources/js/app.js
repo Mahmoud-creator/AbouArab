@@ -1,3 +1,9 @@
 import './bootstrap';
-import './swiper/menu.js'
-import './swiper/products.js'
+import './swiper/menu.js';
+import './swiper/products.js';
+import './menu.js';
+import './sideBar.js';
+import './product-modal.js';
+import './side-cart.js';
+import './checkout.js';
+import './bag.js';

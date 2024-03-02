@@ -1,4 +1,4 @@
-@props(["products" => [], "customerAddress" => null, "checkout" => $checkout])
+@props(["products" => [], "customerAddress" => null, "checkout" => $checkout, "total" => $total])
 @extends('layouts.app')
 @section('main')
     @if( App\Models\Cart::where('user_id', auth()->user()->id)->count())
@@ -86,6 +86,7 @@
                     Checkout
                 </button>
             </div>
+            <input type="hidden" id="open-checkout-flag" value="{{ $checkout ? 'true' : 'false' }}">
             <x-checkout-modal :address="$customerAddress"/>
         </div>
     @else
@@ -94,38 +95,7 @@
             <p><a href="{{ route('page.menu') }}"
                   class="px-3 py-1.5 bg-red-500 hover:bg-red-400 font-semibold transition-all text-white text-2xl">Order
                     Now</a></p>
-
+            <button id="openModalButton">Send message</button>
         </div>
     @endif
-    @if($checkout)
-        <script>
-            $(() => {
-                $('#openModalButton').click();
-            })
-        </script>
-    @endif
-@endsection
-@section('scripts')
-    <script>
-        $('input[name="quantity"]').on('change', function () {
-            let quantity = $(this).val();
-            let id = $(this).data('id');
-            $.ajax({
-                url: "{{ route('cart.quantity') }}",
-                method: "POST",
-                data: {
-                    itemId: id,
-                    quantity: quantity,
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function (data) {
-                    $('#flash-message-container').toggle('hidden');
-                    $('#flash-message').text(data.message);
-                    setTimeout(function () {
-                        $('#flash-message-container').toggle('hidden');
-                    }, 2000)
-                }
-            })
-        })
-    </script>
 @endsection

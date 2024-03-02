@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 
 class CartController extends Controller
 {
@@ -16,13 +17,13 @@ class CartController extends Controller
         $user = auth()->user();
 
         $product = Product::findOrFail($productId);
-        $cartItem = Cart::where('user_id', $user->id)->where('product_id', $product->id)->where('addons', null)->first();
+        $cartItem = Cart::where('user_id', $user->id)->where('product_id', $product->id)->where('addons', null)->with('product')->first();
 
         if ($cartItem) {
             $cartItem->increment('quantity');
             $message = 'Product quantity updated successfully';
         } else {
-            Cart::create([
+            $cartItem = Cart::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,
                 'quantity' => 1,
@@ -32,9 +33,15 @@ class CartController extends Controller
 
         $total = Cart::getTotalQuantity();
 
+        $cartItemView = View::make('components.cart-item', ['item' => $cartItem])->render();
+
+        $totalPrice = Cart::getTotalPrice();
+
         return response()->json([
             'message' => $message,
-            'total' => $total
+            'total' => $total,
+            'cartItemView' => $cartItemView,
+            'cartItemId' => $cartItem->id
         ]);
     }
 
@@ -89,7 +96,7 @@ class CartController extends Controller
             $cartItem->increment('quantity', $quantity);
             $message = 'Product quantity updated successfully';
         } else {
-            Cart::create([
+            $cartItem = Cart::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,
                 'addons' => json_encode($addons),
@@ -100,9 +107,12 @@ class CartController extends Controller
 
         $total = Cart::getTotalQuantity();
 
+        $cartItemView = View::make('components.cart-item', ['item' => $cartItem])->render();
+
         return response()->json([
             'message' => $message,
-            'total' => $total
+            'total' => $total,
+            'cartItemView' => $cartItemView
         ]);
     }
 
@@ -165,6 +175,12 @@ class CartController extends Controller
             'quantity' => $quantity
         ]);
 
-        return response()->json(['message' => 'Quantity updated successfully']);
+        $item->load('product');
+
+        $cartItemView = View::make('components.cart-item', ['item' => $item])->render();
+
+        $total = Cart::getTotalQuantity();
+
+        return response()->json(['message' => 'Quantity updated successfully', 'total' => $total, 'cartItemId' => $item->id, 'cartItemView' => $cartItemView]);
     }
 }

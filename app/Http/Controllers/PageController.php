@@ -27,7 +27,10 @@ class PageController extends Controller
         $title = "Bag | Abou Arab";
         $products = Cart::where('user_id', auth()->user()->id)->with(['product'])->get();
         $customerAddress = Address::firstWhere('user_id', auth()->user()->id);
-        return view('pages.bag', ['title' => $title, 'products' => $products, 'customerAddress' => $customerAddress, 'checkout' => $request->checkout ?? false]);
+
+        $total = Cart::getTotalPrice();
+
+        return view('pages.bag', ['title' => $title, 'total' => $total, 'products' => $products, 'customerAddress' => $customerAddress, 'checkout' => $request->checkout ?? false]);
     }
 
     public function contact(){

@@ -1,7 +1,7 @@
 import Swiper from "swiper";
 
 const menuSwiper = new Swiper('.swiper', {
-    slidesPerView: 5,
+    slidesPerView: 6,
     direction: 'horizontal',
     loop: true,
     pagination: {
@@ -25,7 +25,7 @@ const menuSwiper = new Swiper('.swiper', {
             slidesPerView: 3,
         },
         1024: {
-            slidesPerView: 5,
+            slidesPerView: 6,
         },
     },
 });

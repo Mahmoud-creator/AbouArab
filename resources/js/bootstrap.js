@@ -7,7 +7,19 @@
 import axios from 'axios';
 window.axios = axios;
 
+import jQuery from 'jquery';
+window.$ = jQuery;
+
+import Swal from 'sweetalert2';
+window.Swal = Swal;
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

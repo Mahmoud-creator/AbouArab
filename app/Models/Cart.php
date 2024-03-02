@@ -47,6 +47,9 @@ class Cart extends Model
 
     public static function getTotalPrice()
     {
+        if (auth()->guest()) {
+            return 0;
+        }
         $cartItems = Cart::where('user_id', auth()->user()->id)->with('product')->get();
         $total = 0;
         foreach ($cartItems as $item) {

@@ -57,9 +57,3 @@
         </div>
     @endguest
 </section>
-<script>
-    $(".sidebar-button").click(function () {
-        $("#sidebar").slideToggle();
-        $("#main-container").toggleClass("hidden");
-    })
-</script>
