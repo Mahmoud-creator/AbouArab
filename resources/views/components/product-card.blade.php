@@ -16,7 +16,7 @@
                 <p class="font-bold text-red-500 text-lg">$ {{ $product->price }}</p>
                 <p class="font-light text-sm text-gray-700">{{ $product->description }}</p>
                 @unless(auth()->user())
-                    <button class="rounded redirect-to-login add-to-cart bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>
+                    <button class="{{ $isAdmin ? 'hidden' : '' }} rounded redirect-to-login add-to-cart bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>
                 @endunless
                 @if(auth()->user() && (!isset($isAdmin) || !$isAdmin))
                     <button data-id="{{ $product->id }}" class="rounded add-to-cart add-to-cart-trigger bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>

@@ -89,7 +89,6 @@
             $('.delete-addon').on('click', function () {
                 let addonId = $(this).data('addon-id');
                 let row = $(this).parent().parent().parent();
-                console.log(addonId);
                 confirm("Are you sure you want to delete this addon?") ? $.ajax({
                     'url': '{{ route('admin.addons.delete') }}',
                     'type': 'POST',
@@ -98,7 +97,6 @@
                         '_token': '{{ csrf_token() }}'
                     },
                     'success': function (data) {
-                        console.log('success')
                         $('#flash-message-container').toggle('hidden');
                         $('#flash-message').text(data.message);
                         setTimeout(function () {

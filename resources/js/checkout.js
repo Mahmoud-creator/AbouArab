@@ -1,3 +1,5 @@
+import {rerenderCart} from "@/utils.js";
+
 $(document).ready(function() {
     // Get references to modal elements
     const $openModalButton = $('#openModalButton');
@@ -25,6 +27,28 @@ $(document).ready(function() {
             $modalPanel.removeClass('opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95');
             $modalPanel.addClass('opacity-100 translate-y-0 sm:scale-100');
         }, 10); // Use a small delay to ensure the transition effect works properly
+    }
+
+    // Function to show success message
+    function orderSuccess(whatsappOrderUrl){
+        Swal.fire({
+            title: 'Your order has been placed!',
+            text: 'Send your order on WhatsApp?',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.open(whatsappOrderUrl, '_blank')
+            }
+        });
+        // reload the page
+        setTimeout(function(){
+            location.reload();
+        }, 3000);
     }
 
     // Function to hide the modal
@@ -62,55 +86,20 @@ $(document).ready(function() {
             data: formData,
             success: function (data) {
                 if (data.errors) {
-                    console.log("errors")
-                    console.log(data)
                     $('.error-message').remove();
-                    let generalErrors = '';
                     $.each(data.errors, function (key, value) {
                         const inputField = $(`#${key}`);
                         inputField.addClass('border-red-500');
                         inputField.after(`<p class="text-red-500 text-sm error-message">${value}</p>`);
                     });
                 } else {
-                    console.log("no errors")
-                    console.log(data)
                     $('#flash-message-container').toggle('hidden');
                     $('#flash-message').text(data.message);
                     setTimeout(function () {
                         $('#flash-message-container').toggle('hidden');
-                        let message = `
-                                [Your Restaurant/Company Logo]
-
-                                Invoice
-
-                                Invoice Number: [Unique Invoice Number]
-
-                                Date: [Date of Purchase]
-
-                                Customer Information:
-
-                                Name: [Customer's Name]
-                                Email: [Customer's Email]
-                                Phone Number: [Customer's Phone Number]
-                                Delivery Address: [Customer's Delivery Address]
-                                Order Details:
-
-                                Item #1: [Name of the Dish/Item] - [Quantity] x [Price per unit] = [Total for Item #1]
-                                Item #2: [Name of the Dish/Item] - [Quantity] x [Price per unit] = [Total for Item #2]
-                                ...
-                                Item #n: [Name of the Dish/Item] - [Quantity] x [Price per unit] = [Total for Item #n]
-                                Subtotal: [Sum of all item totals]
-
-                                Tax: [Tax Amount]
-
-                                Delivery Fee: [If applicable]
-
-                                Total Amount: [Subtotal + Tax + Delivery Fee]
-
-                                Payment Method: [Payment Method Used]`
-
                     }, 2000)
                     hideModal();
+                    orderSuccess('https://wa.me/' + data.customerMobileNumber + '?text=' + data.orderReport);
                 }
             },
             error: function (data) {

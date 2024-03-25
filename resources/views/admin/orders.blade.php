@@ -2,10 +2,10 @@
 @section('content')
     <div class="w-full">
         @if(count($orders))
-            <div class="flex flex-row gap-2 ml-3 md:ml0 md:w-48 w-full">
+            {{-- <div class="flex flex-row gap-2 ml-3 md:ml0 md:w-48 w-full">
                 <input type="text" class="rounded-md border-0 placeholder-gray-300" value="" id="search-orders" placeholder="Search orders">
                 <button class="px-2 py-1.5 bg-green-500 text-white hover:bg-green-400 rounded-md border-0">Search</button>
-            </div>
+            </div> --}}
             <div class="bg-white shadow-md rounded my-6 overflow-auto">
                 <table class="min-w-max w-full table-auto">
                     <thead>

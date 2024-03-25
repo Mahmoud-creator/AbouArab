@@ -1,5 +1,4 @@
 export function rerenderCart(show = true) {
-    console.log('reached rerender method');
     let cartHeader = $("#cart-header");
     let cartItemsContainer = $("#cart-items-container");
     let checkoutButton = $("#checkout-to-cart");

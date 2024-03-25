@@ -31,4 +31,19 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'branches' => [
+        1 => [
+            'name' => 'Al-Hadath',
+            'phone' => '+96170805284'
+        ],
+        2 => [
+            'name' => 'Sad Al Bouchrieh',
+            'phone' => '+96170805284'
+        ],
+        3 => [
+            'name' => 'Al-Mansouriey',
+            'phone' => '+96170805284'
+        ],
+    ]
+
 ];

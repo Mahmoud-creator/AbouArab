@@ -6,10 +6,10 @@
 @endsection
 @section('content')
     @if(count($products))
-        <div class="flex flex-row gap-2 ml-3 md:ml0 md:w-48 w-full">
+        {{-- <div class="flex flex-row gap-2 ml-3 md:ml0 md:w-48 w-full">
             <input type="text" class="rounded-md border-0 placeholder-gray-300" value="" id="search-products" placeholder="Search products">
             <button class="px-2 py-1.5 bg-green-500 text-white hover:bg-green-400 rounded-md border-0">Search</button>
-        </div>
+        </div> --}}
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center">
             @foreach($products as $product)

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('main')
-    <section class="w-full h-screen text-center space-y-10">
-        <div class="w-full md:w-5/6 md:rounded-xl flex flex-col-reverse lg:flex-row mx-auto md:mt-10 shadow-md bg-white" style="min-height: 500px">
+    <section class="w-full h-screen text-center space-y-10 md:grid max-w-[800px] mx-auto">
+        <div class="w-full md:rounded-xl flex flex-col-reverse lg:flex-row mx-auto md:mt-10 shadow-md bg-white" style="min-height: 500px">
             <!-- Section 1: Kaake -->
             <div class="flex-1">
                 <div class="md:p-9 px-4">
@@ -20,15 +20,15 @@
                 </div>
             </div>
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/kaake.jpg') }}" alt="Kaake"
+                <img src="{{ asset('storage/banners/kaake.JPG') }}" alt="Kaake"
                      class="md:rounded-tr-xl md:rounded-br-xl w-full h-full object-center object-cover">
             </div>
         </div>
 
-        <div class="w-full md:w-5/6 mx-auto md:rounded-xl flex flex-col lg:flex-row mt-10 shadow-md bg-white" style="min-height: 500px">
+        <div class="w-full mx-auto md:rounded-xl flex flex-col lg:flex-row mt-10 shadow-md bg-white" style="min-height: 500px">
             <!-- Section 2: Kaake Double and Triple Cheese -->
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/pizza-double.jpg') }}" alt="Cheese"
+                <img src="{{ asset('storage/banners/kaake-double.JPG') }}" alt="Cheese"
                      class="md:rounded-tl-xl md:rounded-bl-xl w-full h-full object-center object-cover">
             </div>
             <div class="flex-1">
@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="w-full md:w-5/6 md:rounded-xl flex flex-col-reverse lg:flex-row mx-auto md:mt-10 shadow-md bg-white" style="min-height: 500px">
+        <div class="w-full md:rounded-xl flex flex-col-reverse lg:flex-row mx-auto md:mt-10 shadow-md bg-white" style="min-height: 500px">
             <!-- Section 3: Pizza -->
             <div class="flex-1">
                 <div class="md:p-9 px-4">
@@ -70,15 +70,15 @@
                 </div>
             </div>
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/pizza.jpg') }}" alt="Pizza"
+                <img src="{{ asset('storage/banners/pizza.JPG') }}" alt="Pizza"
                      class="md:rounded-tr-xl md:rounded-br-xl w-full h-full object-center object-cover">
             </div>
         </div>
 
-        <div class="w-full md:w-5/6 mx-auto md:rounded-xl flex flex-col lg:flex-row mt-10 shadow-md bg-white" style="min-height: 500px">
+        <div class="w-full mx-auto md:rounded-xl flex flex-col lg:flex-row mt-10 shadow-md bg-white" style="min-height: 500px">
             <!-- Section 4: Beverages -->
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/beverages.jpg') }}" alt="Beverages"
+                <img src="{{ asset('storage/banners/beverages.JPG') }}" alt="Beverages"
                      class="md:rounded-tl-xl md:rounded-bl-xl w-full h-full object-center object-cover">
             </div>
             <div class="flex-1">
@@ -99,7 +99,7 @@
             </div>
         </div>
 
-        <div class="w-full md:w-5/6 md:rounded-xl flex flex-col-reverse lg:flex-row mx-auto md:mt-10 shadow-md bg-white" style="min-height: 500px">
+        <div class="w-full md:rounded-xl flex flex-col-reverse lg:flex-row mx-auto md:mt-10 shadow-md bg-white" style="min-height: 500px">
             <!-- Section 5: Desserts -->
             <div class="flex-1">
                 <div class="md:p-9 px-4">
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/donut.jpg') }}" alt="Desserts"
+                <img src="{{ asset('storage/banners/deserts.JPG') }}" alt="Desserts"
                      class="md:rounded-tr-xl md:rounded-br-xl w-full h-full object-center object-cover">
             </div>
         </div>

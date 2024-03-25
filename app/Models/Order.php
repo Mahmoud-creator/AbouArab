@@ -11,4 +11,9 @@ class Order extends Model
 
     protected static $unguarded = true;
 
+    public function products()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
+
 }

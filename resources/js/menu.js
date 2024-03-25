@@ -71,7 +71,6 @@ $(document).ready(function () {
 
     // Add to cart
     $('.add-to-cart-trigger').on('click', function () {
-        console.log('clicked' , $(this).data('id'));
         let id = $(this).data('id');
 
         $.ajax({
@@ -89,10 +88,7 @@ $(document).ready(function () {
                 setTimeout(function () {
                     $('#flash-message-container').toggle('hidden')
                 }, 2000);
-                console.log('data', data);
-
                 rerenderCart();
-
 
                 // Check if the template exists and remove it
                 let $existingCartItem = $('#item-'+data.cartItemId);
@@ -106,11 +102,8 @@ $(document).ready(function () {
                 // Calculate the total price
                 let totalCheckout = 0;
                 $('.item-price').each(function () {
-                    console.log('price is: ', parseFloat($(this).data("item-price")));
                     totalCheckout += parseFloat($(this).data("item-price"));
                 })
-
-                console.log('total checkout ', totalCheckout);
 
                 $('#total-cart-price').text('$' + totalCheckout);
                 // end calculate

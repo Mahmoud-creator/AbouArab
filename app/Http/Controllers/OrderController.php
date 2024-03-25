@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
@@ -45,7 +46,7 @@ class OrderController extends Controller
                 'address' => $request->street_address . " " . $request->building_name . " " . $request->floor_number,
                 'amount' => $total,
                 'note' => $request->note,
-                'region' => $request->region,
+                'region' => config('services.branches.' . $request->region . '.name'),
                 'paid' => false,
             ]);
 
@@ -58,8 +59,8 @@ class OrderController extends Controller
                 ]);
             }
 
-            Address::updateOrCreate(['user_id' => auth()->user()->id], [
-                'region' => $request->region,
+            $address = Address::updateOrCreate(['user_id' => auth()->user()->id], [
+                'region' => config('services.branches.' . $request->region . '.name'),
                 'street' => $request->street_address,
                 'building' => $request->building_name,
                 'floor' => $request->floor_number,
@@ -67,10 +68,9 @@ class OrderController extends Controller
 
             Cart::where('user_id', auth()->user()->id)->delete();
 
-
             DB::commit();
 
-            return response()->json(['message' => 'Product ordered successfully']);
+            return response()->json(['message' => 'Product ordered successfully', 'orderReport' => urlencode($this->getOrderReport($order->id, $address, auth()->user())), 'customerMobileNumber' => config('services.branches.' . $request->region . '.phone')]);
 
         } catch (Exception $e) {
             DB::rollBack();
@@ -152,5 +152,59 @@ class OrderController extends Controller
         $order = Order::findOrFail($request->order_id);
         $order->delete();
         return response()->json(['message' => 'Order was deleted successfully']);
+    }
+
+    public function getOrderReport($orderId, $address, $user)
+    {
+        $order = Order::findOrFail($orderId);
+        $branchName = $address->region;
+        $orderNumber = $orderId;
+        $orderDate = $order->created_at->format('d M Y');
+        $customerName = $order->name;
+        $customerEmail = $order->email ?? '--';
+        $customerPhone = $order->phone ?? '--';
+        $customerAddress = $order->address ?? '--';
+
+        $orderItems = $this->getOrderItems($order);
+
+        return "
+        Abou Arab/{$branchName}
+
+        Invoice
+
+        Invoice Number: {$orderNumber}
+
+        Date: {$orderDate}
+
+        Customer Information:
+
+            Name: {$customerName}
+            Email: {$customerEmail}
+            Phone Number: {$customerPhone}
+            Delivery Address: {$customerAddress}
+
+        Order Details:
+
+        {$orderItems}
+
+        Total Amount: $ {$order->amount}
+        ";
+    }
+
+    public function getOrderItems($order)
+    {
+        $itemsText = "\t";
+        foreach($order->products as $key => $product) {
+            $itemsText .= "Item #" . ($key + 1) . ": " . $product->product->name . " - " . $product->quantity . " x " . $product->product->price . " = " . ($product->quantity * $product->product->price) . "\n\t";
+            if ($product->addons != null) {
+                $addons = json_decode($product->addons);
+                foreach($addons as $addon) {
+                    $addonObject = Addons::firstWhere('slug' , $addon);
+                    $itemsText .= $addonObject->name . " - " . $product->quantity . " x " . $addonObject->price . " = " . ($product->quantity * $addonObject->price) . "\n\t";
+                }
+                $itemsText .= "\n\t";
+            }
+        }
+        return $itemsText;
     }
 }

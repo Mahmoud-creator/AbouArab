@@ -21,7 +21,6 @@ $(document).ready(function () {
     })
 
     confirmButton.on('click', function () {
-        console.log('with addons');
         let id = $('#product-modal-id').data('product-id');
         let quantity = quantityInput.val();
         let productAddons = $('input[name="product-addons"]:checked').map(function () {
@@ -66,11 +65,7 @@ $(document).ready(function () {
                     totalCheckout += parseFloat($(this).data("item-price"));
                 })
 
-                console.log('total checkout ', totalCheckout);
-
                 $('#total-cart-price').text('$' + totalCheckout);
-                // end calculate
-
             },
             'error': function (data) {
                 console.log('reached error');

@@ -37,7 +37,6 @@ $(document).ready(function () {
     $('#sideCart').on('click', '.delete-cart-item', function () {
         let $button = $(this);
         let id = $button.data('item-id');
-        console.log(id);
         $.ajax({
             url: route('cart.delete'),
             type: 'POST',
@@ -70,7 +69,6 @@ $(document).ready(function () {
         }
 
         if ($quantityInput.val() == 1 && action == 'decrement') {
-            console.log('decrement final');
             $('#error-flash-message-container').toggle('hidden');
             $('#error-flash-message').text('Quantity must be greater than 1');
             setTimeout(function () {
@@ -106,10 +104,7 @@ $(document).ready(function () {
                         totalCheckout += parseFloat($(this).data("item-price"));
                     })
 
-                    console.log('total checkout ', totalCheckout);
-
                     $('#total-cart-price').text('$' + totalCheckout);
-                    // end calculate
 
                 }
             })
