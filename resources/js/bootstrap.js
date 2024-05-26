@@ -13,7 +13,12 @@ window.$ = jQuery;
 import Swal from 'sweetalert2';
 window.Swal = Swal;
 
+
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+window.csrf_token = () => {
+    return $('meta[name="csrf-token"]').attr('content');
+}
 
 $.ajaxSetup({
     headers: {

@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/kaake.JPG') }}" alt="Kaake"
+                <img src="{{ asset('storage/banners/kaake.webp') }}" alt="Kaake"
                      class="md:rounded-tr-xl md:rounded-br-xl w-full h-full object-center object-cover">
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="w-full mx-auto md:rounded-xl flex flex-col lg:flex-row mt-10 shadow-md bg-white" style="min-height: 500px">
             <!-- Section 2: Kaake Double and Triple Cheese -->
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/kaake-double.JPG') }}" alt="Cheese"
+                <img src="{{ asset('storage/banners/kaake-double.webp') }}" alt="Cheese"
                      class="md:rounded-tl-xl md:rounded-bl-xl w-full h-full object-center object-cover">
             </div>
             <div class="flex-1">
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/pizza.JPG') }}" alt="Pizza"
+                <img src="{{ asset('storage/banners/pizza.webp') }}" alt="Pizza"
                      class="md:rounded-tr-xl md:rounded-br-xl w-full h-full object-center object-cover">
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="w-full mx-auto md:rounded-xl flex flex-col lg:flex-row mt-10 shadow-md bg-white" style="min-height: 500px">
             <!-- Section 4: Beverages -->
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/beverages.JPG') }}" alt="Beverages"
+                <img src="{{ asset('storage/banners/beverages.webp') }}" alt="Beverages"
                      class="md:rounded-tl-xl md:rounded-bl-xl w-full h-full object-center object-cover">
             </div>
             <div class="flex-1">
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="flex-1">
-                <img src="{{ asset('storage/banners/deserts.JPG') }}" alt="Desserts"
+                <img src="{{ asset('storage/banners/deserts.webp') }}" alt="Desserts"
                      class="md:rounded-tr-xl md:rounded-br-xl w-full h-full object-center object-cover">
             </div>
         </div>

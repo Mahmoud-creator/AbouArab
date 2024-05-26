@@ -3,7 +3,7 @@
     <div class="flex flex-row">
         <div class="w-3/5">
             <p class="sc-product-name text-lg text-red-500 font-bold">{{ $item->quantity }} {{ $item->product->name }}</p>
-            <p class="sc-product-price text-md text-gray-700 font-bold">${{ $item->product->price }}</p>
+            <p class="sc-product-price text-md text-gray-700 font-bold">{{ $item->product->price }}</p>
         </div>
         <div class="w-2/5">
             <img class="lazyload w-full object-center object-cover"
@@ -16,7 +16,7 @@
             @foreach($item->getAddons() as $addon)
                 <div class="flex flex-row space-x-5">
                     <p class="text-sm text-gray-700 font-bold">{{ $addon->name }}</p>
-                    <p class="text-xs text-gray-700">$ {{ $addon->price }}</p>
+                    <p class="text-xs text-gray-700">{{ $addon->price }}</p>
                 </div>
             @endforeach
         </div>
@@ -39,7 +39,7 @@
             <button data-item-id="{{ $item->id }}" class="delete-cart-item fa-solid fa-trash text-sm text-red-500 hover:text-red-400"></button>
         </div>
         <div class="item-price" data-item-price="{{ $item->getItemPrice() }}">
-            <p class="font-semibold"><span class="text-red-500">${{ $item->getItemPrice() }}</span>
+            <p class="font-semibold"><span class="text-red-500">{{ $item->getItemPrice() }}</span>
             </p>
         </div>
     </div>

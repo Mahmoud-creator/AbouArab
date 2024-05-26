@@ -13,7 +13,7 @@
                 <input type="hidden" name="productAddons" value="{{ $product->addons }}">
 
                 <p class="font-bold text-xl">{{ $product->name }}</p>
-                <p class="font-bold text-red-500 text-lg">$ {{ $product->price }}</p>
+                <p class="font-bold text-red-500 text-lg">{{ $product->price }}</p>
                 <p class="font-light text-sm text-gray-700">{{ $product->description }}</p>
                 @unless(auth()->user())
                     <button class="{{ $isAdmin ? 'hidden' : '' }} rounded redirect-to-login add-to-cart bg-red-500 hover:bg-red-400 capitalize px-3 py-1.5 text-white transition-all">Add to cart</button>

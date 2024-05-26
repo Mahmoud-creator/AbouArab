@@ -1,3 +1,4 @@
+import select2 from 'select2';
 import './bootstrap';
 import './swiper/menu.js';
 import './swiper/products.js';
@@ -7,3 +8,7 @@ import './product-modal.js';
 import './side-cart.js';
 import './checkout.js';
 import './bag.js';
+import './create-product.js';
+import './admin-dashboard.js';
+import './addons.js';
+import './orders.js';

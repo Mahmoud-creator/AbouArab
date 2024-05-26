@@ -5,21 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Abou Arab | Dashboard</title>
     <link rel="icon" type="image/png" href="{{ asset('storage/logo/logo-transparent.png') }}">
-    {{--jQuery--}}
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     {{--Font Awsome--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    {{--Swiper--}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    {{--Select2 CDN--}}
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    {{--Project Scripts & Styles--}}
-    <script src="https://cdn.tailwindcss.com"></script>
+
     @vite(['resources/js/app.js', 'resources/css/app.css'])
+
+    @routes
 
     @yield('header-scripts')
 </head>
@@ -152,23 +147,8 @@
 
     <x-flash-message />
 </div>
-<script>
-    $(document).ready(function() {
-        const userMenuButton = $('#user-menu-button');
-        const userMenu = $('#user-menu');
-        const mobileMenuButton = $('#mobile-menu-button');
-        const mobileMenu = $('#mobile-menu');
-
-        userMenuButton.click(function(event) {
-            event.preventDefault();
-            userMenu.toggleClass('hidden');
-        });
-        mobileMenuButton.click(function(event) {
-            event.preventDefault();
-            mobileMenu.toggleClass('hidden');
-        });
-    });
-</script>
 @yield('footer-scripts')
+
 </body>
+
 </html>

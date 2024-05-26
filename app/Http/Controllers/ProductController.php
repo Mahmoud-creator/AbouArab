@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\ProductAddon;
 use App\Models\ProductCategory;
+use Buglinjo\LaravelWebp\Facades\Webp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -39,11 +40,15 @@ class ProductController extends Controller
             DB::BeginTransaction();
 
             $image = $request->file('image');
+            $webImage = Webp::make($image);
 
-            $path = $image->store('public/images');
+            $saved = $webImage->save(public_path('storage/images/' . $image->hashName()));
 
-            $url = 'storage/' . str_replace('public/', '', $path);
+            if (!$saved) {
+                return redirect()->back()->with(['error' => 'Failed to upload image']);
+            }
 
+            $url = 'storage/images/' . $image->hashName();
 
             $product = Product::create([
                 'name' => $request->name,

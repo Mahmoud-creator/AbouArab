@@ -58,7 +58,7 @@
                             <div class="mb-4">
                                 <label for="addons[]"
                                        class="block mb-2 text-sm font-medium leading-5 text-gray-700">Addons</label>
-                                <select class="addons w-full" name="addons[]" multiple="multiple">
+                                <select class="addons addons-select-options-edit w-full" name="addons[]" id="addons-select-options-edit" multiple="multiple">
                                     <option value="" disabled>Select Addons</option>
                                     @foreach(\App\Models\Addons::all() as $addon)
                                         <option value="{{ $addon->id }}" @if(in_array($addon->id, $product->addons->pluck('id')->toArray())) selected @endif>{{ $addon->name }}</option>
@@ -77,42 +77,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('footer-scripts')
-    <script>
-        $(document).ready(function () {
-            $('#image').change(function () {
-                var input = this;
-                var imgPreview = $('#image-preview')[0];
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        imgPreview.src = e.target.result;
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                } else {
-                    imgPreview.src = '';
-                }
-            });
-        });
-
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#file-upload').change(function() {
-                if (this.files && this.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        $('#image-preview').attr('src', e.target.result);
-                    };
-                    reader.readAsDataURL(this.files[0]);
-                }
-            });
-        });
-        $(document).ready(function() {
-            $('.addons').select2();
-        });
-    </script>
 @endsection
